@@ -1,2 +1,5 @@
-<?php
-echo "this is sparta";
+@extends('admin::layout.app');
+
+@section('content')
+vasya mindreksu
+    @endsection
