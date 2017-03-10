@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('restaurants');
 });
+
+Route::get('authentication',function () {
+    return view('authentication');
+})->name('authentication');
+
+Route::post('authentication','UserController@authentication')->name('authentication');
+
+Route::get('registration',function () {
+    return view('registration');
+})->name('registration');
+
+Route::post('registration','UserController@registration')->name('registration');
