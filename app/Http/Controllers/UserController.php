@@ -17,9 +17,15 @@ class UserController extends Controller
     }
     public function registration(Request $request)
     {
+        $this->validate($request, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:8|confirmed',
+        ]);
         $user = new User();
-        $user->first_name = $request['first_name'];
-        $user->last_name = $request['last_name'];
+        $user->first_name =ucfirst( $request['first_name']);
+        $user->last_name = ucfirst($request['last_name']);
         $user->email = $request['email'];
         $user->password = bcrypt($request['password']);
 

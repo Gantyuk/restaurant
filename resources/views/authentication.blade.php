@@ -10,7 +10,6 @@
         <lable for="password">PASSWORD</lable>
         <input class="form-control" type="password" name="password">
         <br>
-        <input type="hidden" name="_token" value="{{Session::token()}}">
         {{csrf_field()}}
         <input class="form-control btn btn-primary" type="submit" value="AUTHENTICATION">
     </form>
