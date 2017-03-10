@@ -12,5 +12,7 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/','LoginController@show');
+    Route::get('/','IndexController@index');
+    Route::get('/map','IndexController@map');
+    Route::get('/restaurant/create','RestaurantController@create');
 });

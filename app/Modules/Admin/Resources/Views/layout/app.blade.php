@@ -1,270 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootsrtap Free Admin Template - SIMINTA | Admin Dashboad Template</title>
-    <!-- Core CSS - Include with every page -->
-    <link href="admin_asset/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="admin_asset/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="admin_asset/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-    <link href="admin_asset/assets/css/style.css" rel="stylesheet" />
-    <link href="admin_asset/assets/css/main-style.css" rel="stylesheet" />
-    <!-- Page-Level CSS -->
-    <link href="admin_asset/assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="/admin_asset/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/admin_asset/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/admin_asset/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="/admin_asset/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="/admin_asset/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/admin_asset/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/admin_asset/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/admin_asset/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/admin_asset/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="/admin_asset/build/css/custom.min.css" rel="stylesheet">
 </head>
-<body>
-<!--  wrapper -->
-<div id="wrapper">
-    <!-- end page-wrapper -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-        <!-- navbar-header -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">
-                <img src="admin_asset/assets/img/logo.png" alt="" />
-            </a>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="/img/koala.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2>John Doe</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>General</h3>
+                        <ul class="nav side-menu">
+                            <li><a href="/admin"><i class="fa fa-home"></i>Home</a></li>
+
+                            <li><a><i class="fa fa-edit"></i> Restaurant <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/admin/restaurant">Show all restaurants</a></li>
+                                    <li><a href="/admin/restaurant/create">Create new restaurant</a></li>
+                                    <li><a href="form_validation.html">Form Validation</a></li>
+                                    <li><a href="form_wizards.html">Form Wizard</a></li>
+                                    <li><a href="form_upload.html">Form Upload</a></li>
+                                    <li><a href="form_buttons.html">Form Buttons</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="menu_section">
+                        <h3>Live On</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="e_commerce.html">E-commerce</a></li>
+                                    <li><a href="projects.html">Projects</a></li>
+                                    <li><a href="project_detail.html">Project Detail</a></li>
+                                    <li><a href="contacts.html">Contacts</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="page_403.html">403 Error</a></li>
+                                    <li><a href="page_404.html">404 Error</a></li>
+                                    <li><a href="page_500.html">500 Error</a></li>
+                                    <li><a href="plain_page.html">Plain Page</a></li>
+                                    <li><a href="login.html">Login Page</a></li>
+                                    <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="#level1_1">Level One</a>
+                                    <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                                            </li>
+                                            <li><a href="#level2_1">Level Two</a>
+                                            </li>
+                                            <li><a href="#level2_2">Level Two</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#level1_2">Level One</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
         </div>
-        <!-- end navbar-header -->
-        <!-- navbar-top-links -->
-        <ul class="nav navbar-top-links navbar-right">
-            <!-- main dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <span class="top-label label label-danger">3</span><i class="fa fa-envelope fa-3x"></i>
-                </a>
-                <!-- dropdown-messages -->
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong><span class=" label label-danger">Andrew Smith</span></strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong><span class=" label label-info">Jonney Depp</span></strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong><span class=" label label-success">Jonney Depp</span></strong>
-                                <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- end dropdown-messages -->
-            </li>
 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <span class="top-label label label-success">4</span>  <i class="fa fa-tasks fa-3x"></i>
-                </a>
-                <!-- dropdown tasks -->
-                <ul class="dropdown-menu dropdown-tasks">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 1</strong>
-                                    <span class="pull-right text-muted">40% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                        <span class="sr-only">40% Complete (success)</span>
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/img/koala.jpg" alt="">John Doe
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="javascript:;"> Profile</a></li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li><a href="javascript:;">Help</a></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 2</strong>
-                                    <span class="pull-right text-muted">20% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                        <span class="sr-only">20% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 3</strong>
-                                    <span class="pull-right text-muted">60% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <p>
-                                    <strong>Task 4</strong>
-                                    <span class="pull-right text-muted">80% Complete</span>
-                                </p>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                        <span class="sr-only">80% Complete (danger)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Tasks</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- end dropdown-tasks -->
-            </li>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <span class="top-label label label-warning">5</span>  <i class="fa fa-bell fa-3x"></i>
-                </a>
-                <!-- dropdown alerts-->
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i>New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-twitter fa-fw"></i>3 New Followers
-                                <span class="pull-right text-muted small">12 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i>Message Sent
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-tasks fa-fw"></i>New Task
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-upload fa-fw"></i>Server Rebooted
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- end dropdown-alerts -->
-            </li>
+        <!-- page content -->
+        @yield('content')
+        <!-- /page content -->
 
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-3x"></i>
-                </a>
-                <!-- dropdown user-->
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
-                    </li>
-                </ul>
-                <!-- end dropdown-user -->
-            </li>
-            <!-- end main dropdown -->
-        </ul>
-        <!-- end navbar-top-links -->
-
-    </nav>
-
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
 </div>
 
-@include('admin::layout.navb_side')
-<!-- end wrapper -->
-@yield('content')
-<!-- Core Scripts - Include with every page -->
-<script src="admin_asset/assets/plugins/jquery-1.10.2.js"></script>
-<script src="admin_asset/assets/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="admin_asset/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="admin_asset/assets/plugins/pace/pace.js"></script>
-<script src="admin_asset/assets/scripts/siminta.js"></script>
-<!-- Page-Level Plugin Scripts-->
-<script src="admin_asset/assets/plugins/morris/raphael-2.1.0.min.js"></script>
-<script src="admin_asset/assets/plugins/morris/morris.js"></script>
-<script src="admin_asset/assets/scripts/dashboard-demo.js"></script>
+<!-- jQuery -->
+<script src="/admin_asset/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/admin_asset/js/bootstrap.min.js"></script>
+<!--FastClick -->
+<script src="/admin_asset/js/fastclick.js"></script>
+<!--NProgress -->
+<script src="/admin_asset/js/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="/admin_asset/js/bootstrap-progressbar.min.js"></script>
+<script src="/admin_asset/js/switchery.min.js"></script>
+
+<script src="/admin_asset/js/bootstrap-wysiwyg.min.js"></script>
+<script src="/admin_asset/js/jquery.hotkeys.js"></script>
+<!--&lt;!&ndash; Select2 &ndash;&gt;-->
+<script src="/admin_asset/js/jquery.tagsinput.js"> </script>
+
+<script src="/admin_asset/js/custom.min.js"></script>
 
 </body>
-
 </html>
