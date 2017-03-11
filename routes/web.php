@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('restaurants');
 });
 
+Route::get('/restaurants/{id}', function () {
+    return view('restaurants.restaurant');
+});
+
 Route::get('authentication',function () {
     return view('authentication');
 })->name('authentication');

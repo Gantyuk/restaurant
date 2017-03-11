@@ -2,8 +2,27 @@
 h1{
     text-align: center;
 }
+
+h3{
+    text-align: center;
+}
 a{
     text-decoration: none;
     color: black;
+}
+.thumb img {
+    filter: none; /* IE6-9 */
+    -webkit-filter: grayscale(0);
+    border-radius:5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding:5px;
+}
+.thumb img:hover {
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1);
+}
+.thumb {
+    padding:5px;
 }
 
