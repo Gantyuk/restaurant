@@ -37,4 +37,11 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('authentication');
     }
+
+    public function log_out()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
 }

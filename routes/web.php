@@ -26,3 +26,5 @@ Route::get('registration',function () {
 })->name('registration');
 
 Route::post('registration','UserController@registration')->name('registration');
+
+Route::get('log_out','UserController@log_out')->name('logout');
