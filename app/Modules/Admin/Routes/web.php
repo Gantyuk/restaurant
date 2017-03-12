@@ -11,8 +11,10 @@
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::get('/','IndexController@index');
-    Route::get('/map','IndexController@map');
+//    Route::get('/map','IndexController@map');
     Route::get('/restaurant/create','RestaurantController@create');
+    Route::post('/restaurant/create','RestaurantController@store');
 });
+Route::get('/map','IndexController@map');

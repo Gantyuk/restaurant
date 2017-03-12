@@ -1,6 +1,6 @@
 <?php
 // address to map
-$map_address = "Украина,Черновцы,головна,36";
+$map_address = "Украина,Черновцы,головна,34";
 $url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=".urlencode($map_address);
 $lat_long = get_object_vars(json_decode(file_get_contents($url)));
 // pick out what we need (lat,lng)
@@ -9,7 +9,7 @@ $lat_long = $lat_long['results'][0]->geometry->location->lat . "," . $lat_long['
 
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
-<div id="map_canvas" style="height: 500px; width: 500px"></div>
+<div id="map_canvas" style="height: 250px; width: 500px"></div>
 
 <script>
     (function() {

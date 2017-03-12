@@ -37,9 +37,11 @@
             </div>
         </div>
         <!-- /top tiles -->
-
-
-
+        <form id="upload-widget" method="post" action="/upload" class="dropzone">
+            <div class="fallback">
+                <input name="file" type="file" />
+            </div>
+        </form>
         <div class="row">
 
 

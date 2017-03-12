@@ -21,6 +21,6 @@ class IndexController extends Controller
     {
 
 
-        return view('admin::restaurant.map');
+        return view('admin::helpers.map2');
     }
 }

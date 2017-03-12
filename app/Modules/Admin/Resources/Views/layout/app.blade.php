@@ -11,6 +11,7 @@
 
     <!-- Bootstrap -->
     <link href="/admin_asset/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/admin_asset/css/dropzone.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="/admin_asset/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -273,6 +274,8 @@
 <script src="/admin_asset/js/jquery.tagsinput.js"> </script>
 
 <script src="/admin_asset/js/custom.min.js"></script>
+<script src="/admin_asset/js/dropzone.min.js"></script>
+
 
 </body>
 </html>

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
+    protected $fillable =[
+        'name','short_description','description'
+    ];
     public function categories()
     {
         return $this->belongsToMany('App\Category', 'category_restaurants', 'restaurant_id', 'category_id')->withTimestamps();

@@ -89,7 +89,7 @@
             </div>
 
             <div id="editor-one" class="editor-wrapper" onchange="jk()"></div>
-            <textarea name="descr" id="descr" style="display:none;"></textarea>
+            <textarea name="description" id="descr" style="display:none;"></textarea>
             <br />
             <script type="text/javascript">
                 function jk() {
