@@ -44,4 +44,10 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function profile($id)
+    {
+        $user = User::find($id);
+        return view('profile')->with(['user' => $user]);
+    }
+
 }

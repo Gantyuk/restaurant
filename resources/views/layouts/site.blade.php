@@ -34,7 +34,7 @@
                     <li><a href="{{ route('registration') }}">Реєстрація</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="{{route('profile',['id'=> Auth::user()->id])}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->first_name }} <span class="caret"></span>
                         </a>
 {{--not vork--}}
