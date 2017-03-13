@@ -80,7 +80,7 @@
 
                     <div class="fileUpload btn btn-primary btn-sm">
                         <span>Upload menus</span>
-                        <input id="uploadFls" type="file" name="menu" multiple class="upload"/>
+                        <input id="uploadFls" type="file" name="menu[]" multiple class="upload"/>
                     </div>
                     <input id="uploadFile" placeholder="Choose File" multiple disabled="disabled"/>
                     <script type="text/javascript">

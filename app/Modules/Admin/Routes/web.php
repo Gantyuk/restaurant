@@ -15,6 +15,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::get('/','IndexController@index');
 //    Route::get('/map','IndexController@map');
     Route::get('/restaurant/create','RestaurantController@create');
+    Route::get('/restaurant','RestaurantController@show');
     Route::post('/restaurant/create','RestaurantController@store');
 });
 Route::get('/map','IndexController@map');
