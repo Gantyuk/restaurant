@@ -34,3 +34,4 @@ Route::post('registration','UserController@registration')->name('registration');
 Route::get('log_out','UserController@log_out')->name('logout');
 
 Route::get('user/{id}','UserController@profile')->name('profile');
+Route::post('update','UserController@update_profile')->name('update_profile');
