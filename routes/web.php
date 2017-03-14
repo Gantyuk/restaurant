@@ -34,4 +34,6 @@ Route::post('registration','UserController@registration')->name('registration');
 Route::get('log_out','UserController@log_out')->name('logout');
 
 Route::get('user/{id}','UserController@profile')->name('profile');
+Route::get('user_marks/{id}','UserController@marks')->name('marks');
+Route::get('user_comments/{id}','UserController@comments')->name('comments');
 Route::post('update','UserController@update_profile')->name('update_profile');

@@ -5,8 +5,8 @@
 @endsection
 @section('adds')
     <div class="col-md-6">
-        <a href="#">COMMENTS</a>
-        <a href="#">MARKS</a>
+        <a href="{{route('comments', ['id'=>$user->id])}}">COMMENTS</a>
+        <a href="{{route('marks', ['id'=>$user->id])}}">MARKS</a>
     </div>
     @endsection
 

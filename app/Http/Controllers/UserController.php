@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mark;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,4 +75,17 @@ class UserController extends Controller
         return redirect('/');
     }
 
+
+    public function marks($id)
+    {
+        $user = User::find($id);
+        $marks = $user->marks;
+       return view('marks')->with(['marks' => $marks]);
+    }
+    public function comments($id)
+    {
+        $user = User::find($id);
+        $comments = $user->comments;
+        return view('comments')->with(['comments' => $comments]);
+    }
 }

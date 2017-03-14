@@ -11,6 +11,17 @@
                 {{ csrf_field() }}
 
 
+                    <div class="form-group">
+                        <label for="first_name" class="col-md-4 control-label">Ім'я</label>
+
+                        <div class="col-md-6">
+                            <input id="first_name" type="text" class="form-control" name="first_name"
+                                   value="" autofocus>
+
+                        </div>
+                    </div>
+
+
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="col-md-4 control-label">Електронна адреса</label>
 
