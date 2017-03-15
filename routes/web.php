@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('restaurants');
-});
+Route::get('/', 'RestaurantsController@index');
 
-Route::get('/restaurants/{id}', function () {
-    return view('restaurants.restaurant');
-});
+Route::post('restaurants/{id}','RestaurantsController@restaurant'
+/*function (\App\Restaurant $id) {
+    $restaurant = \App\Restaurant::where('id',$id)->get();
+    return view('restaurants.restaurant',compact('restaurant'));
+}*/
+)->name('viewrestoran');
 
 Route::get('authentication',function () {
     return view('authentication');

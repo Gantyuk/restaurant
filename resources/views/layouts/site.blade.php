@@ -19,7 +19,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img id="logo" src="#" width="90" height="30"></a>
+            <a class="navbar-brand" href="/"><img id="logo" src="/img/LOGO.png" width="90" height="25"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -37,7 +37,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->first_name }} <span class="caret"></span>
                         </a>
-{{--not vork--}}
+                        {{--not vork--}}
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ route('logout') }}"
@@ -46,7 +46,8 @@
                                     Вихід
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="get" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="get"
+                                      style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
 
@@ -60,15 +61,6 @@
     </div>
 </nav>
 
-<h1><a href="/">Restaurants</a></h1>
-<h3><a href="/restaurants/1">Restaurants/1</a></h3>
-@if(count ($errors) > 0)
-    <ul>
-        @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-        @endforeach
-    </ul>
-@endif
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
@@ -78,18 +70,32 @@
         </div>
         <br>
         <div class="col-sm-8 text-left">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             @yield('content')
         </div>
         <div class="col-sm-2 sidenav">
-
-                @yield('adds')
-
-
+            {{--<div class="well">
+                <p>ADS</p>
+            </div>
+            <div class="well">
+                <p>ADS</p>
+            </div>--}}
         </div>
     </div>
 </div>
 
+<footer class="container-fluid text-center">
+    <p>Автори: © 2017</p>
+</footer>
 
-</div>
 </body>
 </html>

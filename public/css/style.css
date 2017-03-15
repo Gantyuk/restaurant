@@ -25,4 +25,15 @@ a{
 .thumb {
     padding:5px;
 }
+.restoran_info {
+    padding: 10px;
+    float: left;
+    height: auto;
+    width: 55%;
+}
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
 
