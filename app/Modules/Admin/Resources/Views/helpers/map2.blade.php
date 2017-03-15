@@ -42,6 +42,7 @@
 
         });
         var searchBox = new google.maps.places.SearchBox(document.getElementById('searchmap'));
+
         var markers = [];
         // [START region_getplaces]
         // Listen for the event fired when the user selects a prediction and retrieve

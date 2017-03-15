@@ -32,6 +32,9 @@
 
     <!-- Custom Theme Style -->
     <link href="/admin_asset/build/css/custom.min.css" rel="stylesheet">
+    <script src="/admin_asset/js/jquery.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqe3b2zbkqIgwb8CtpJfAWW1KCeiUQhGM&libraries=places"
+            type="text/javascript"></script>
 </head>
 
 <body class="nav-md">
