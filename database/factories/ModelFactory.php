@@ -82,7 +82,6 @@ $factory->define(App\Comment::class, function (Faker\Generator $faker) {
         'comment' => $faker->text(),
         'user_id' =>$user_id->id,
         'restaurant_id'=>$restaurant_id->id,
-        'parent'=>random_int(15, 60)
 
     ];
 });

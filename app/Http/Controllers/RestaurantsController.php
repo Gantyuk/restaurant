@@ -18,14 +18,14 @@ class RestaurantsController extends Controller
         $img = new Collection();
         foreach ($restaurants as $restaurant):
             $mark["$restaurant->id"] = DB::table('marks')->where('restaurant_id', $restaurant->id)->avg('mark');
-            $img["$restaurant->id"] = DB::table('images')->where('restaurant_id', $restaurant->id)->first();
+          //  $img["$restaurant->id"] = DB::table('images')->where('restaurant_id', $restaurant->id)->first();
         endforeach;
         return view('restaurants.restaurants', compact('restaurants', 'img', 'mark'));
     }
 
     public function restaurant($id)
     {
-        $restaurant = DB::table('restaurants')->where('id', $id)->get();
+        $restaurant = Restaurant::find($id);
         $path_img = DB::table('images')->where('restaurant_id', $id)->get();
         $mark = DB::table('marks')->where('restaurant_id', $id)->avg('mark');
         return view('restaurants.restaurant', compact('restaurant', 'path_img','mark'));

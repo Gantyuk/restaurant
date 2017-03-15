@@ -1,12 +1,12 @@
 @extends('layouts.site')
 @section('title')
-    {{$restaurant[0]->name}}
+    {{$restaurant->name}}
 @endsection
 
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h1>{{$restaurant[0]->name}}</h1></div>
+        <div class="panel-heading"><h1>{{$restaurant->name}}</h1></div>
         <div class="panel-body">
             <div class="form-group">
                 {{--galereia--}}
@@ -32,13 +32,18 @@
             <div class="form-group">
                   <p> Оцінка: {!! $mark !!}</p>
             </div>
-            Опис:<p>{!! $restaurant[0]->description !!}</p>
+            Опис:<p>{!! $restaurant->description !!}</p>
+            <form action="{{route('add_comment')}}" method="post">
             <div class="form-group">
                 <label for="comment">Comment:</label>
-                <textarea class="form-control" rows="5" id="comment"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary">Coment</button>
+                <input type="hidden"  name="restaurant_id" value="{{$restaurant->id}}">
+                <input type="hidden"  name="user_id" value="{{ Auth::user()->id }}">
 
+                <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Comment</button>
+                {{ csrf_field() }}
+            </form>
         </div>
     </div>
 

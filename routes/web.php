@@ -13,12 +13,7 @@
 
 Route::get('/', 'RestaurantsController@index');
 
-Route::post('restaurants/{id}','RestaurantsController@restaurant'
-/*function (\App\Restaurant $id) {
-    $restaurant = \App\Restaurant::where('id',$id)->get();
-    return view('restaurants.restaurant',compact('restaurant'));
-}*/
-)->name('viewrestoran');
+Route::get('restaurant/{id}','RestaurantsController@restaurant')->name('view_restaurant');
 
 Route::get('authentication',function () {
     return view('authentication');
@@ -38,3 +33,4 @@ Route::get('user/{id}','UserController@profile')->name('profile');
 Route::get('user_marks/{id}','UserController@marks')->name('marks');
 Route::get('user_comments/{id}','UserController@comments')->name('comments');
 Route::post('update','UserController@update_profile')->name('update_profile');
+Route::post('add_comment', 'CommentController@add_comment')->name('add_comment');

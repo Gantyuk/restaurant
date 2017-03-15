@@ -93,7 +93,7 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->timestamps();;
             $table->string('comment');
-            $table->integer('parent');
+            $table->integer('parent_id')->default(0);
             $table->boolean('visible')->default(1);
         });
     }
