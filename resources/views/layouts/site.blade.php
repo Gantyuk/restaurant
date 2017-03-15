@@ -33,23 +33,30 @@
                     <li><a href="{{ route('authentication') }}">Вхід</a></li>
                     <li><a href="{{ route('registration') }}">Реєстрація</a></li>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->first_name }} <span class="caret"></span>
+                    <li>
+                        <a href="{{route('profile',['id'=> Auth::user()->id])}}">
+                            {{ Auth::user()->first_name }}
                         </a>
+<<<<<<< HEAD
                         {{--not vork--}}
                         <ul class="dropdown-menu" role="menu">
+=======
+                    </li>
+>>>>>>> 31b7e6841783955884f585bfebe6cb003fb45579
                             <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                <a href="{{ route('logout') }}">
                                     Вихід
                                 </a>
+                            </li>
 
+
+<<<<<<< HEAD
                                 <form id="logout-form" action="{{ route('logout') }}" method="get"
                                       style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
+=======
+>>>>>>> 31b7e6841783955884f585bfebe6cb003fb45579
 
                             </li>
                         </ul>
