@@ -37,3 +37,7 @@ footer {
     padding: 15px;
 }
 
+.parent_comment{
+    border: 2px solid black;
+    padding: 5px;
+}
