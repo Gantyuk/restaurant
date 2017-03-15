@@ -17,6 +17,7 @@ class CommentController extends Controller
         $comment->comment = $request['comment'];
         $comment->restaurant_id = $request['restaurant_id'];
         $comment->user_id = $request['user_id'];
+        $comment->parent_id = $request['parent_id'];
 
         $restaurant->comments()->save($comment);
         $user->comments()->save($comment);

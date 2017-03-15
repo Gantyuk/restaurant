@@ -37,13 +37,23 @@
             <div class="form-group">
                 <label for="comment">Comment:</label>
                 <input type="hidden"  name="restaurant_id" value="{{$restaurant->id}}">
+                <input type="hidden"  name="parent_id" id="parent_id" value="0">
                 <input type="hidden"  name="user_id" value="{{ Auth::user()->id }}">
 
-                <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+                <textarea  class="form-control" rows="5" id="comment" name="comment"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Comment</button>
                 {{ csrf_field() }}
             </form>
+            <div class="form-group">
+                <h3> COMMENTS: </h3>
+                @foreach($comments as $comment)
+                    <h4>{{$comment->user->first_name}}</h4>
+                    <p>{{$comment->comment}}</p>
+                    <p class="parent_comment" data-user-id="{{$comment->user->id}}" data-user-name="{{$comment->user->first_name}}">Відповісти</p>
+                    <p align="right">{{$comment->created_at}}</p>
+                    @endforeach
+            </div>
         </div>
     </div>
 

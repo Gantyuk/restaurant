@@ -5,6 +5,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
+
     <title>@yield('title')</title>
     <link href="/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen"/>
@@ -88,4 +89,6 @@
 </footer>
 
 </body>
+<script src="/jquery/jquery-1.11.2.min.js"></script>
+<script src="/js/project.js"></script>
 </html>
