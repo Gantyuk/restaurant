@@ -37,32 +37,14 @@
                         <a href="{{route('profile',['id'=> Auth::user()->id])}}">
                             {{ Auth::user()->first_name }}
                         </a>
-<<<<<<< HEAD
-                        {{--not vork--}}
-                        <ul class="dropdown-menu" role="menu">
-=======
                     </li>
->>>>>>> 31b7e6841783955884f585bfebe6cb003fb45579
-                            <li>
-                                <a href="{{ route('logout') }}">
-                                    Вихід
-                                </a>
-                            </li>
-
-
-<<<<<<< HEAD
-                                <form id="logout-form" action="{{ route('logout') }}" method="get"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-=======
->>>>>>> 31b7e6841783955884f585bfebe6cb003fb45579
-
-                            </li>
-                        </ul>
-                        {{--end--}}
+                    <li>
+                        <a href="{{ route('logout') }}">
+                            Вихід
+                        </a>
                     </li>
-                @endif
+
+            @endif
             </ul>
         </div>
     </div>
@@ -96,6 +78,7 @@
             <div class="well">
                 <p>ADS</p>
             </div>--}}
+            @yield('adds')
         </div>
     </div>
 </div>
