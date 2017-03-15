@@ -138,7 +138,7 @@
                             <small>about restaurant</small>
                             @if ($errors->has('image'))
                                 <span class="help-block">
-                                        <strong style="color: darkred">{{ $errors->first('image') }}</strong>
+                                        <strong style="color: darkred">{{ $errors->first('desctiption') }}</strong>
                                     </span>
                             @endif
                         </h2>
