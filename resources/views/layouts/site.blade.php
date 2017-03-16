@@ -66,7 +66,8 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+
+            @endif
             </ul>
         </div>
     </div>
@@ -101,6 +102,7 @@
             <div class="well">
                 <p>ADS</p>
             </div>--}}
+            @yield('adds')
         </div>
     </div>
 </div>
