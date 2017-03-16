@@ -26,8 +26,13 @@ class StoreRestorant extends FormRequest
         return [
             'name'=>'required|min:2',
             'category'=>'required',
+<<<<<<< HEAD
             'short_description'=>'required|min:50|max:150',
             'description'=>'required|min:150',
+=======
+            'short_description'=>'required|min:5|max:150',
+            'description'=>'required|min:15',
+>>>>>>> 16306b747d15f557864cc0092a4c6470ecc6199e
             'image'=>'required',
             'menu'=>'required',
             'address'=>'required'
