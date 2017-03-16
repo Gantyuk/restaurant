@@ -85,7 +85,13 @@
                                         <td class=" ">{{$md->id}}</td>
 
                                         <td class=" ">{{$md->name}}</td>
-                                        <td class=" ">{{$md->id}}</td>
+                                        <td><select class="form-control">
+                                                @if(!empty($md->categories[0]->name))
+                                                    <option>{{$md->categories[0]->name}}</option>
+                                                @else
+                                                    <option>null</option>
+                                                @endif
+                                            </select></td>
 
                                         <td class=" ">{{$md->created_at}}</td>
                                         <td class="a-center ">

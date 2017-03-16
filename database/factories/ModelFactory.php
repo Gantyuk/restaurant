@@ -34,6 +34,17 @@ $factory->define(App\Restaurant::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\CategoryRestaurant::class, function (Faker\Generator $faker) {
+    $id =  \DB::table('restaurants')->select('id')->inRandomOrder()->limit(1)->first();
+    $cat_id =  \DB::table('categories')->select('id')->inRandomOrder()->limit(1)->first();
+
+    return [
+        'restaurant_id' => $id->id,
+        'category_id' => $cat_id->id,
+    ];
+});
+
+
 $factory->define(App\Schedule::class, function (Faker\Generator $faker) {
         $id =  \DB::table('restaurants')->select('id')->inRandomOrder()->limit(1)->first();
 

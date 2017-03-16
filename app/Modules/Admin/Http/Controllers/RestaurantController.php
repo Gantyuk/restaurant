@@ -2,11 +2,12 @@
 
 namespace App\Modules\Admin\Http\Controllers;
 
+use App\Address;
 use App\Category;
 use App\CategoryRestaurant;
 use App\Document;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
+use App\Http\Requests\StoreRestorant;
 use App\Image;
 use App\Restaurant;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class RestaurantController extends Controller
     public function show()
     {
         $model = Restaurant::paginate(20);
-        return view('admin::restaurant.show',['model'=>$model]);
+        return view('admin::restaurant.show', ['model' => $model]);
     }
 
     public function create()
@@ -27,10 +28,9 @@ class RestaurantController extends Controller
     }
 
 
-    public function store(Requests\StoreRestorant $request)
+    public function store(StoreRestorant $request)
     {
         $restaurant = Restaurant::create($request->all());
-
         foreach ($request->category as $category) {
 
             CategoryRestaurant::create([
@@ -40,20 +40,25 @@ class RestaurantController extends Controller
             );
         }
         $image = $request->file('image');
-        $this->saveFiles(Image::class, $image, $restaurant->id);
+        $image_path = 'img/restaurants/';
+        $this->saveFiles(Image::class, $image, $restaurant->id, $image_path);
         $menu = $request->file('menu');
-        $this->saveFiles(Document::class, $menu, $restaurant->id);
+        $menu_path = 'img/restaurants/menu/';
+        $this->saveFiles(Document::class, $menu, $restaurant->id, $menu_path);
+//            foreach ($request->address as $address){
+//                Address::create($address->all());
+//            }
 
     }
 
-    private function saveFiles($model, $file, $id)
+    private function saveFiles($model, $file, $id, $path)
     {
         foreach ($file as $img) {
             $extends = $img->getClientOriginalExtension();
-            $name = $this->uniqueFileName($model,$extends);
-            $img->move('../files', $name);
+            $name = $this->uniqueFileName($model, $extends, $path);
+            $img->move($path, $name);
             $model::create([
-                'path' => '../files/' . $name,
+                'path' => $path . $name,
                 'restaurant_id' => $id,
                 'type' => $extends,
             ]);
@@ -61,9 +66,9 @@ class RestaurantController extends Controller
         }
     }
 
-    private function uniqueFileName($obj,$extends)
+    private function uniqueFileName($obj, $extends, $path)
     {
-        $file_name = '../files/' .str_random(30).".".$extends;
+        $file_name = $path . str_random(30) . "." . $extends;
         $name = $obj::where('path', $file_name)->get();
         if ($name->isEmpty()) {
             return $file_name;
