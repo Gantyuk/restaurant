@@ -27,6 +27,69 @@ class RestaurantController extends Controller
         return view('admin::restaurant.create', ['category' => $category]);
     }
 
+    public function edit($id)
+    {
+        $category = Category::select('id', 'name')->get();
+        $restaurant = Restaurant::find($id);
+
+        return view('admin::restaurant.edit', ['category' => $category, 'model' => $restaurant]);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        if ($request->type == 'image') {
+            $image = Image::find($id);
+            if (file_exists(substr($image->path, 1))) {
+                unlink(substr($image->path, 1));
+            }
+            Image::destroy($id);
+        } elseif ($request->type == 'menu') {
+            $doc = Document::find($id);
+            if (file_exists(substr($doc->path, 1))) {
+                unlink($doc->path);
+            }
+            Document::destroy($id);
+        }
+        if ($request->type == 'address') {
+            Address::destroy($id);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $restaurant = Restaurant::find($id);
+        $restaurant->update($request->all());
+        if ($request->category != null)
+            foreach ($request->category as $category) {
+
+                CategoryRestaurant::create([
+                        'restaurant_id' => $restaurant->id,
+                        'category_id' => $category
+                    ]
+                );
+            }
+        if ($request->file('image') != null) {
+            $image = $request->file('image');
+            $image_path = '/img/restaurants/';
+            $this->saveFiles(Image::class, $image, $restaurant->id, $image_path);
+        }
+        if (($request->file('menu')) != null) {
+            $menu = $request->file('menu');
+            $menu_path = '/img/restaurants/menu/';
+            $this->saveFiles(Document::class, $menu, $restaurant->id, $menu_path);
+        }
+        if ($request->address != null)
+            foreach ($request->address as $address) {
+                Address::create([
+                    'street' => $address['street'],
+                    'house' => $address['house'],
+                    'lat' => $address['lat'],
+                    'lng' => $address['lng'],
+                    'restaurant_id' => $restaurant->id]);
+            }
+        return redirect('/');
+
+    }
 
     public function store(StoreRestorant $request)
     {
@@ -40,15 +103,20 @@ class RestaurantController extends Controller
             );
         }
         $image = $request->file('image');
-        $image_path = 'img/restaurants/';
+        $image_path = '/img/restaurants/';
         $this->saveFiles(Image::class, $image, $restaurant->id, $image_path);
         $menu = $request->file('menu');
-        $menu_path = 'img/restaurants/menu/';
+        $menu_path = '/img/restaurants/menu/';
         $this->saveFiles(Document::class, $menu, $restaurant->id, $menu_path);
-//            foreach ($request->address as $address){
-//                Address::create($address->all());
-//            }
-
+        foreach ($request->address as $address) {
+            Address::create([
+                'street' => $address['street'],
+                'house' => $address['house'],
+                'lat' => $address['lat'],
+                'lng' => $address['lng'],
+                'restaurant_id' => $restaurant->id]);
+        }
+        return redirect('/');
     }
 
     private function saveFiles($model, $file, $id, $path)
@@ -56,12 +124,13 @@ class RestaurantController extends Controller
         foreach ($file as $img) {
             $extends = $img->getClientOriginalExtension();
             $name = $this->uniqueFileName($model, $extends, $path);
-            $img->move($path, $name);
+
             $model::create([
-                'path' => $path . $name,
+                'path' => $name,
                 'restaurant_id' => $id,
                 'type' => $extends,
             ]);
+            $img->move(substr($path, 1), $name);
 
         }
     }

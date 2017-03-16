@@ -17,6 +17,9 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::get('/restaurant/create','RestaurantController@create');
     Route::get('/restaurant','RestaurantController@show');
     Route::post('/restaurant/create','RestaurantController@store');
+    Route::get('/restaurant/{id}/edit','RestaurantController@edit');
+    Route::put('/restaurant/{id}','RestaurantController@update');
+    Route::delete('/restaurant/{id}','RestaurantController@delete');
 });
 Route::post('/add_address','MapController@create_address');
 Route::post('/check_address','MapController@check_address');

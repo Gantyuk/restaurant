@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="right_col" role="main" style="min-height: 3801px;">
         <div class="col-md-12 col-sm-12 col-xs-12">
 
@@ -21,7 +20,7 @@
                                     class="required">*</span>
                         </label>
                         <div class="col-md-4 col-sm-3 col-xs-12">
-                            <input name="name" type="text" id="first-name" value="{{ old('name') }}" required="required"
+                            <input name="name" type="text" id="first-name"  value="{{ old('name') }}" required="required"
                                    class="form-control col-md-4 col-xs-12">
                         </div>
                         @if ($errors->has('name'))
@@ -36,7 +35,7 @@
                     <div class="form-group {{ $errors->has('category') ? ' has-error' : '' }}">
                         <label class="control-label col-md-1 col-sm-3 col-xs-12">Category<span
                                     class="required">*</span></label>
-                        <div class="col-md-7 col-sm-9 col-xs-12">
+                        <div class="col-md-5 col-sm-9 col-xs-12">
                             <select name="category[]" class="select2_multiple form-control" multiple="multiple">
                                 @foreach($category as $value)
                                     <option value="{{$value->id}}">{{$value->name}}</option>
@@ -83,18 +82,7 @@
                     @endif
                     <script type="text/javascript">
 
-                        document.getElementById("uploadBtn").onchange = function () {
 
-                            var input = $(this), numFiles = input.get(0).files ? input.get(0).files.length : 1;
-                            if (numFiles < 2) {
-                                $("#uploadImg").val(input.val());
-                            }
-                            else {
-                                $("#uploadImg").val("uploaded " + numFiles + " files");
-
-                            }
-
-                        };
                     </script>
                     {{-- End Images--}}
 
@@ -154,16 +142,16 @@
                                        placeholder="Street, house №">
                                 <span class="fa fa-map-marker form-control-feedback left" aria-hidden="true"></span>
                             </div>
-                            <button class="btn btn-primary" type="reset" id="che" onclick="checkAddress()">Check
+                            <button class="btn btn-primary" type="button" id="che" onclick="checkAddress()">Check
                             </button>
-                            <button class="btn btn-primary" type="reset" onclick="addAddress()">Add</button>
+                            <button class="btn btn-primary" type="button" onclick="addAddress()">Add</button>
                         </div>
                         <div class="form-group">
                             <div class="map">
                                 @include('admin::helpers.map')
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback address"
-                                 style="height: auto; width: 500px;">
+                                 style="height: 300px; width: 500px; overflow-y: scroll;">
                                 <table class="table table-striped jambo_table bulk_action">
                                     <thead>
                                     <tr class="headings">
@@ -190,59 +178,7 @@
                                     </span>
                             @endif
                             <div class="results"></div>
-                            <script type="text/javascript">
-                                var count = 0;
-                                function checkAddress() {
 
-                                    var address = $('#inputSuccess2').val();
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/add_address',
-                                        data: 'address=' + address,
-                                        success: function (data) {
-
-                                            var location = new google.maps.LatLng(data['lat'], data['lng'])
-                                            map.setCenter(location);
-                                            $('#inputSuccess2').val(address);
-                                            var markers = new google.maps.Marker({
-                                                position: location,
-                                                map: map
-                                            });
-                                            map.setZoom(18);
-                                            marker.push(markers);
-
-
-                                        }
-                                    });
-                                }
-                                function addAddress() {
-                                    var address = $('#inputSuccess2').val();
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/add_address',
-                                        data: 'address=' + address,
-                                        success: function (data) {
-                                            count++;
-                                            var location = new google.maps.LatLng(data['lat'], data['lng'])
-                                            map.setCenter(location);
-                                            $('#inputSuccess2').val(address);
-                                            $("tbody.address").append("<tr class=\"even pointer\" id=\"add" + count + "\">" +
-                                                "<td class=\" \">" + data['street'] + "</td>" +
-                                                "<td class=\" \">" + data['house'] + "</td>" +
-                                                "<td class=\" \"><button onclick='deleteAdress(" + count + ")'>delete</button>" +
-                                                "<input type=\"text\" name='address[" + count + "][street]' hidden value=\"" + data['street'] + "\">" +
-                                                "<input type=\"text\" name='address[" + count + "][house]' hidden value=\"" + data['house'] + "\">" +
-                                                "<input type=\"text\" name='address[" + count + "][lat]' hidden value=\"" + data['lat'] + "\">" +
-                                                "<input type=\"text\" name='address[" + count + "][lng]' hidden value=\"" + data['lng'] + "\">" +
-                                                "</td> </tr>");
-
-                                        }
-                                    });
-                                }
-                                function deleteAdress(id) {
-                                    $("#add" + id).remove();
-                                }
-                            </script>
                         </div>
 
                         {{--End Map--}}
@@ -263,5 +199,6 @@
 
 
     </div>
+    <script src="/admin_asset/js/admin_create.js"></script>
 
 @endsection
