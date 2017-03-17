@@ -9,7 +9,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">{!! $restaurant->name !!}</div>
             <div class="panel-body">
-                {{--<img src="{!! $img[$restaurant->id]->path!!}" align="left" width="44%">--}}
+                <img src="{!! $img[$restaurant->id]->path!!}" align="left" width="44%">
 
                 <div class="restoran_info">
                     <ul class="list-group">

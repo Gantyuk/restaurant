@@ -43,6 +43,23 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{route('comments', ['id'=>$user->id])}}">Мої коментарі</a>
+                            </li>
+                            <li>
+                                <a href="{{route('marks', ['id'=>$user->id])}}">Мої оцінки</a>
+                            </li>
+                            <li>
+                                <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
+                                                     document.getElementById('users-form').submit();">
+                                    Змінити профіль
+                                </a>
+                                <form id="users-form" action="{{route('profile',['id'=> Auth::user()->id])}}"
+                                      method="GET"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -54,20 +71,10 @@
                                     {{ csrf_field() }}
                                 </form>
                             </li>
-                            <li>
-                                <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
-                                                     document.getElementById('users-form').submit();">
-                                    Змінити профіль
-                                </a>
-                                <form id="users-form" action="{{route('profile',['id'=> Auth::user()->id])}}" method="GET"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
                         </ul>
                     </li>
 
-            @endif
+                @endif
             </ul>
         </div>
     </div>
@@ -102,7 +109,6 @@
             <div class="well">
                 <p>ADS</p>
             </div>--}}
-            @yield('adds')
         </div>
     </div>
 </div>

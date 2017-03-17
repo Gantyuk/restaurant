@@ -3,13 +3,6 @@
     {{--name--}}
     User Profile
 @endsection
-@section('adds')
-    <div class="col-md-6">
-        <a href="{{route('comments', ['id'=>$user->id])}}">COMMENTS</a>
-        <a href="{{route('marks', ['id'=>$user->id])}}">MARKS</a>
-    </div>
-    @endsection
-
 @section('content')
 
 
