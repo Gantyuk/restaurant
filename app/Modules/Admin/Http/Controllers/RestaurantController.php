@@ -46,7 +46,7 @@ class RestaurantController extends Controller
         } elseif ($request->type == 'menu') {
             $doc = Document::find($id);
             if (file_exists(substr($doc->path, 1))) {
-                unlink($doc->path);
+                unlink(substr($doc->path, 1));
             }
             Document::destroy($id);
         }
