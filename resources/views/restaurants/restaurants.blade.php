@@ -15,8 +15,10 @@
                     <ul class="list-group">
                         <li class="list-group-item">Оцінка: {!! $mark[$restaurant->id]  !!}</li>
                         <li class="list-group-item">Категорій:
-                            @foreach($category as $categ)
-                                {{$categ->name}}
+                            @foreach($categoriesRestaurant[$restaurant->id] as $categ)
+                                @foreach($categ as $cat)
+                                {{$cat->name}}
+                                    @endforeach
                             @endforeach
                         </li>
                         <li class="list-group-item">Адреса:</li>
