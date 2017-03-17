@@ -16,11 +16,12 @@ class CreateTables extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('last_name')->default('');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('path_img');
-            $table->boolean('is_admin');
+            $table->string('path_img')->default('');
+            $table->boolean('is_admin')->default(0);
+            $table->boolean('ban')->default(0);
             $table->rememberToken();
             $table->timestamps();
 
@@ -66,6 +67,7 @@ class CreateTables extends Migration
             $table->string('name');
             $table->string('short_description');
             $table->longText('description');
+            $table->boolean('visible')->default(1);
         });
 
         Schema::create('category_restaurants', function (Blueprint $table) {
@@ -92,6 +94,7 @@ class CreateTables extends Migration
             $table->timestamps();;
             $table->string('comment');
             $table->integer('parent');
+            $table->boolean('visible')->default(1);
         });
     }
 

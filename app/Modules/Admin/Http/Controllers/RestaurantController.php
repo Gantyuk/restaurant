@@ -32,7 +32,6 @@ class RestaurantController extends Controller
     {
         $category = Category::select('id', 'name')->get();
         $restaurant = Restaurant::find($id);
-
         return view('admin::restaurant.edit', ['category' => $category, 'model' => $restaurant]);
     }
 
@@ -85,6 +84,7 @@ class RestaurantController extends Controller
             );
         }
         $image = $request->file('image');
+
         $image_path = '/img/restaurants/';
         $this->saveFiles(Image::class, $image, $restaurant->id, $image_path);
         $menu = $request->file('menu');
@@ -99,6 +99,7 @@ class RestaurantController extends Controller
                 'restaurant_id' => $restaurant->id]);
         }
         return redirect('/');
+
     }
 
     public function delete(Request $request, $id)
@@ -126,6 +127,7 @@ class RestaurantController extends Controller
         foreach ($file as $img) {
             $extends = $img->getClientOriginalExtension();
             $name = $this->uniqueFileName($model, $extends, $path);
+
 
             $model::create([
                 'path' => $name,

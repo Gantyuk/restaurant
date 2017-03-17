@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('restaurants');
-});
+Route::get('/', 'RestaurantsController@index');
 
-Route::get('/restaurants/{id}', function () {
-    return view('restaurants.restaurant');
-});
+Route::post('restaurants/{id}','RestaurantsController@restaurant'
+/*function (\App\Restaurant $id) {
+    $restaurant = \App\Restaurant::where('id',$id)->get();
+    return view('restaurants.restaurant',compact('restaurant'));
+}*/
+)->name('viewrestoran');
 
 Route::get('authentication',function () {
     return view('authentication');
@@ -32,3 +33,8 @@ Route::get('registration',function () {
 Route::post('registration','UserController@registration')->name('registration');
 
 Route::get('log_out','UserController@log_out')->name('logout');
+
+Route::get('user/{id}','UserController@profile')->name('profile');
+Route::get('user_marks/{id}','UserController@marks')->name('marks');
+Route::get('user_comments/{id}','UserController@comments')->name('comments');
+Route::post('update','UserController@update_profile')->name('update_profile');
