@@ -44,10 +44,10 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{route('comments', ['id'=>$user->id])}}">Мої коментарі</a>
+                                <a href="{{route('comments', ['id'=>Auth::user()->id])}}">Мої коментарі</a>
                             </li>
                             <li>
-                                <a href="{{route('marks', ['id'=>$user->id])}}">Мої оцінки</a>
+                                <a href="{{route('marks', ['id'=>Auth::user()->id])}}">Мої оцінки</a>
                             </li>
                             <li>
                                 <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();

@@ -28,29 +28,46 @@
             </div>
             {{--*****--}}
             <div class="form-group">
-                  <p> Оцінка: {!! $mark !!}</p>
+                <p> Оцінка: {!! $mark !!}</p>
             </div>
-            Опис:<p>{!! $restaurant->description !!}</p>
-            <form action="{{route('add_comment')}}" method="post">
-            <div class="form-group">
-                <label for="comment">Comment:</label>
-                <input type="hidden"  name="restaurant_id" value="{{$restaurant->id}}">
-                <input type="hidden"  name="parent_id" id="parent_id" value="0">
-                <input type="hidden"  name="user_id" value="{{ Auth::user()->id }}">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Опис:<p>{!! $restaurant->description !!}</p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p><label><h4> Коментувати: </h4></label></p>
+                    <img for="comment" src="{{ Auth::user()->path_img }}" align="left" width="100px" height="100px"
+                         class="img-circle">
+                    <form action="{{route('add_comment')}}" method="post">
 
-                <textarea  class="form-control" rows="5" id="comment" name="comment"></textarea>
+                        <div class="form-group">
+                            <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
+                            <input type="hidden" name="parent_id" id="parent_id" value="0">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <p><textarea rows="3" cols="100" name="comment"></textarea></p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Відправити</button>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Comment</button>
-                {{ csrf_field() }}
-            </form>
             <div class="form-group">
-                <h3> COMMENTS: </h3>
+
                 @foreach($comments as $comment)
-                    <h4>{{$comment->user->first_name}}</h4>
-                    <p>{{$comment->comment}}</p>
-                    <a class="parent_comment" data-user-id="{{$comment->user->id}}" data-user-name="{{$comment->user->first_name}}">Відповісти</a>
-                    <p align="right">{{$comment->created_at}}</p>
-                    @endforeach
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img src="{{ $comment->user->path_img }}" align="left" width="100px" height="100px"
+                                 class="img-circle">
+                            <h4>{{$comment->user->first_name}}</h4>
+                            <p>{{$comment->comment}}</p>
+                            <a class="parent_comment btn btn-info" data-user-id="{{$comment->user->id}}"
+                               data-user-name="{{$comment->user->first_name}}">Відповісти</a>
+                            <p align="right">{{$comment->created_at}}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

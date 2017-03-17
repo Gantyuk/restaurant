@@ -41,6 +41,7 @@ class RestaurantsController extends Controller
         $restaurant = Restaurant::find($id);
         $path_img = Image::where('restaurant_id', $id)->get();
         $mark = Mark::where('restaurant_id', $id)->avg('mark');
-        return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark'));
+        $comments = $restaurant->comments;
+        return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark','comments'));
     }
 }

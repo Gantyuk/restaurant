@@ -34,7 +34,7 @@
 
     <div class="form-group"><br>
         <label for="image" class="col-md-4 control-label">Зображення:</label>
-        <img src="{{ $user->path_img }}" alt="" width="100px" height="100px">
+        <img src="{{ $user->path_img }}" alt="" width="100px" height="100px" class="img-circle">
 
     </div>
         @endif
