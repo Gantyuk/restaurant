@@ -81,6 +81,8 @@
                         url: '/admin/restaurant/hidde/'+id+1,
                         data: 'visible='+visible+'&_method=put&_token={{csrf_token()}}',
                         success: function(data){
+                            alert(id);
+
                         }
                     });
                 }
