@@ -9,30 +9,18 @@
 
                 <form enctype="multipart/form-data" role="form" href="/admin/restaurant/store" method="post"
                       id="demo-form2" class="form-horizontal form-label-left">
-<<<<<<< HEAD
 
 
 
 
 
-=======
-
-
-
-
-
->>>>>>> 16306b747d15f557864cc0092a4c6470ecc6199e
                     {{--Name--}}
                     <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}" >
                         <label class="control-label col-md-1 col-sm-1 col-xs-7" for="first-name">Name <span
                                     class="required">*</span>
                         </label>
                         <div class="col-md-4 col-sm-3 col-xs-12">
-<<<<<<< HEAD
-                            <input name="name" type="text" id="first-name" value="{{ old('name') }}" required="required"
-=======
                             <input name="name" type="text" id="first-name"  value="{{ old('name') }}" required="required"
->>>>>>> 16306b747d15f557864cc0092a4c6470ecc6199e
                                    class="form-control col-md-4 col-xs-12">
                         </div>
                         @if ($errors->has('name'))
@@ -68,7 +56,7 @@
                         <label class="control-label col-md-1 col-sm-3 col-xs-12">Short discription</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <textarea  value="{{ old('short_description') }}" name="short_description" class="resizable_textarea form-control"
-                                      placeholder="Shourt description about Restaurant"></textarea>
+                                       placeholder="Shourt description about Restaurant"></textarea>
                         </div>
                         @if ($errors->has('short_description'))
                             <span class="help-block">
@@ -154,26 +142,16 @@
                                        placeholder="Street, house №">
                                 <span class="fa fa-map-marker form-control-feedback left" aria-hidden="true"></span>
                             </div>
-<<<<<<< HEAD
-                            <button class="btn btn-primary" type="reset" id="che" onclick="checkAddress()">Check
-                            </button>
-                            <button class="btn btn-primary" type="reset" onclick="addAddress()">Add</button>
-=======
                             <button class="btn btn-primary" type="button" id="che" onclick="checkAddress()">Check
                             </button>
                             <button class="btn btn-primary" type="button" onclick="addAddress()">Add</button>
->>>>>>> 16306b747d15f557864cc0092a4c6470ecc6199e
                         </div>
                         <div class="form-group">
                             <div class="map">
                                 @include('admin::helpers.map')
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback address"
-<<<<<<< HEAD
-                                 style="height: auto; width: 500px;">
-=======
                                  style="height: 300px; width: 500px; overflow-y: scroll;">
->>>>>>> 16306b747d15f557864cc0092a4c6470ecc6199e
                                 <table class="table table-striped jambo_table bulk_action">
                                     <thead>
                                     <tr class="headings">
@@ -181,84 +159,6 @@
                                         <th class="column-title" style="display: table-cell;">locality</th>
                                         <th class="column-title" style="display: table-cell;">home</th>
                                         <th class="column-title" style="display: table-cell;">delete</th>
-<<<<<<< HEAD
-
-                                    </tr>
-                                    </thead>
-                                    <tbody class="address">
-                                    <tr class="even pointer">
-                                        {{--addresses--}}
-
-                                    </tr>
-                                    </tbody>
-
-                                </table>
-
-                            </div>
-                            @if ($errors->has('address'))
-                                <span class="help-block">
-                                        <strong style="color: darkred">{{ $errors->first('address') }}</strong>
-                                    </span>
-                            @endif
-                            <div class="results"></div>
-                            <script type="text/javascript">
-                                var count = 0;
-                                function checkAddress() {
-
-                                    var address = $('#inputSuccess2').val();
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/add_address',
-                                        data: 'address=' + address,
-                                        success: function (data) {
-
-                                            var location = new google.maps.LatLng(data['lat'], data['lng'])
-                                            map.setCenter(location);
-                                            $('#inputSuccess2').val(address);
-                                            var markers = new google.maps.Marker({
-                                                position: location,
-                                                map: map
-                                            });
-                                            map.setZoom(18);
-                                            marker.push(markers);
-
-
-                                        }
-                                    });
-                                }
-                                function addAddress() {
-                                    var address = $('#inputSuccess2').val();
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/add_address',
-                                        data: 'address=' + address,
-                                        success: function (data) {
-                                            count++;
-                                            var location = new google.maps.LatLng(data['lat'], data['lng'])
-                                            map.setCenter(location);
-                                            $('#inputSuccess2').val(address);
-                                            $("tbody.address").append("<tr class=\"even pointer\" id=\"add" + count + "\">" +
-                                                "<td class=\" \">" + data['street'] + "</td>" +
-                                                "<td class=\" \">" + data['house'] + "</td>" +
-                                                "<td class=\" \"><button onclick='deleteAdress(" + count + ")'>delete</button>" +
-                                                "<input type=\"text\" name='address[" + count + "][street]' hidden value=\"" + data['street'] + "\">" +
-                                                "<input type=\"text\" name='address[" + count + "][house]' hidden value=\"" + data['house'] + "\">" +
-                                                "<input type=\"text\" name='address[" + count + "][lat]' hidden value=\"" + data['lat'] + "\">" +
-                                                "<input type=\"text\" name='address[" + count + "][lng]' hidden value=\"" + data['lng'] + "\">" +
-                                                "</td> </tr>");
-
-                                        }
-                                    });
-                                }
-                                function deleteAdress(id) {
-                                    $("#add" + id).remove();
-                                }
-                            </script>
-                        </div>
-
-                        {{--End Map--}}
-
-=======
 
                                     </tr>
                                     </thead>
@@ -283,7 +183,6 @@
 
                         {{--End Map--}}
 
->>>>>>> 16306b747d15f557864cc0092a4c6470ecc6199e
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="button">Cancel</button>
