@@ -7,7 +7,6 @@ use App\Category;
 use App\CategoryRestaurant;
 use App\Document;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EditRestorRequest;
 use App\Http\Requests\StoreRestorant;
 use App\Image;
 use App\Restaurant;
@@ -32,11 +31,43 @@ class RestaurantController extends Controller
     {
         $category = Category::select('id', 'name')->get();
         $restaurant = Restaurant::find($id);
+
         return view('admin::restaurant.edit', ['category' => $category, 'model' => $restaurant]);
     }
 
+    public function delete(Request $request, $id)
+    {
+        if ($request->type == 'image') {
+            $image = Image::find($id);
+            if (file_exists(substr($image->path, 1))) {
+                unlink(substr($image->path, 1));
+            }
+            Image::destroy($id);
+        } elseif ($request->type == 'menu') {
+            $doc = Document::find($id);
+            if (file_exists(substr($doc->path, 1))) {
+                unlink($doc->path);
+            }
+            Document::destroy($id);
+        }
+        if ($request->type == 'address') {
+            Address::destroy($id);
+        }
+    }
+    public function hiddeRest(Request $request, $id){
+        $restaurant = Restaurant::find($id);
+        if($request->visible == true){
+            $restaurant->visible=1;
+            $restaurant->save();
+        }else{
+            $restaurant->visible=0;
+            $restaurant->save();
+        }
 
-    public function update(EditRestorRequest $request, $id)
+
+    }
+
+    public function update(Request $request, $id)
     {
         $restaurant = Restaurant::find($id);
         $restaurant->update($request->all());
@@ -84,7 +115,6 @@ class RestaurantController extends Controller
             );
         }
         $image = $request->file('image');
-
         $image_path = '/img/restaurants/';
         $this->saveFiles(Image::class, $image, $restaurant->id, $image_path);
         $menu = $request->file('menu');
@@ -99,27 +129,6 @@ class RestaurantController extends Controller
                 'restaurant_id' => $restaurant->id]);
         }
         return redirect('/');
-
-    }
-
-    public function delete(Request $request, $id)
-    {
-        if ($request->type == 'image') {
-            $image = Image::find($id);
-            if (file_exists(substr($image->path, 1))) {
-                unlink(substr($image->path, 1));
-            }
-            Image::destroy($id);
-        } elseif ($request->type == 'menu') {
-            $doc = Document::find($id);
-            if (file_exists(substr($doc->path, 1))) {
-                unlink($doc->path);
-            }
-            Document::destroy($id);
-        }
-        if ($request->type == 'address') {
-            Address::destroy($id);
-        }
     }
 
     private function saveFiles($model, $file, $id, $path)
@@ -127,7 +136,6 @@ class RestaurantController extends Controller
         foreach ($file as $img) {
             $extends = $img->getClientOriginalExtension();
             $name = $this->uniqueFileName($model, $extends, $path);
-
 
             $model::create([
                 'path' => $name,
