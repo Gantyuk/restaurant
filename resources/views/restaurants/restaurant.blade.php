@@ -1,12 +1,12 @@
 @extends('layouts.site')
 @section('title')
-    {{$restaurant[0]->name}}
+    {{$restaurant->name}}
 @endsection
 
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h1>{{$restaurant[0]->name}}</h1></div>
+        <div class="panel-heading"><h1>{{$restaurant->name}}</h1></div>
         <div class="panel-body">
             <div class="form-group">
                 {{--galereia--}}
@@ -30,7 +30,7 @@
             <div class="form-group">
                   <p> Оцінка: {!! $mark !!}</p>
             </div>
-            Опис:<p>{!! $restaurant[0]->description !!}</p>
+            Опис:<p>{!! $restaurant->description !!}</p>
             <div class="form-group">
                 <label for="comment">Comment:</label>
                 <textarea class="form-control" rows="5" id="comment"></textarea>

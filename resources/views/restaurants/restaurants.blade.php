@@ -14,7 +14,11 @@
                 <div class="restoran_info">
                     <ul class="list-group">
                         <li class="list-group-item">Оцінка: {!! $mark[$restaurant->id]  !!}</li>
-                        <li class="list-group-item">Категорій:</li>
+                        <li class="list-group-item">Категорій:
+                            @foreach($category as $categ)
+                                {{$categ->name}}
+                            @endforeach
+                        </li>
                         <li class="list-group-item">Адреса:</li>
                         <li class="list-group-item">Опис:<p>{!! $restaurant->short_description !!}</p></li>
                         <li class="list-group-item">
