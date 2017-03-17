@@ -54,6 +54,18 @@ class RestaurantController extends Controller
             Address::destroy($id);
         }
     }
+    public function hiddeRest(Request $request, $id){
+        $restaurant = Restaurant::find($id);
+        if($request->visible == true){
+            $restaurant->visible=1;
+            $restaurant->save();
+        }else{
+            $restaurant->visible=0;
+            $restaurant->save();
+        }
+
+
+    }
 
     public function update(Request $request, $id)
     {

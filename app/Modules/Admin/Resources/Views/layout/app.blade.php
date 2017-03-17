@@ -69,14 +69,16 @@
                         <ul class="nav side-menu">
                             <li><a href="/admin"><i class="fa fa-home"></i>Home</a></li>
 
-                            <li><a><i class="fa fa-edit"></i> Restaurant <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-cutlery"></i> Restaurant <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/admin/restaurant">Show all restaurants</a></li>
                                     <li><a href="/admin/restaurant/create">Create new restaurant</a></li>
-                                    <li><a href="form_validation.html">Form Validation</a></li>
-                                    <li><a href="form_wizards.html">Form Wizard</a></li>
-                                    <li><a href="form_upload.html">Form Upload</a></li>
-                                    <li><a href="form_buttons.html">Form Buttons</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-users"></i> User <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="/admin/restaurant">Show all restaurants</a></li>
+                                    <li><a href="/admin/restaurant/create">Create new restaurant</a></li>
                                 </ul>
                             </li>
 
@@ -281,7 +283,6 @@
 <script src="/admin_asset/js/jquery.tagsinput.js"> </script>
 
 <script src="/admin_asset/js/custom.min.js"></script>
-
 
 </body>
 </html>
