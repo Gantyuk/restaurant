@@ -51,7 +51,7 @@ class RestaurantController extends Controller
             Document::destroy($id);
         }
         if ($request->type == 'address') {
-            Address::destroy($id);
+            Address::destroy(substr($image->path, 1));
         }
     }
     public function hiddeRest(Request $request, $id){
