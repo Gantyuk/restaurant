@@ -31,6 +31,7 @@ class RestaurantController extends Controller
     {
         $category = Category::select('id', 'name')->get();
         $restaurant = Restaurant::find($id);
+
         return view('admin::restaurant.edit', ['category' => $category, 'model' => $restaurant]);
     }
 
@@ -45,13 +46,25 @@ class RestaurantController extends Controller
         } elseif ($request->type == 'menu') {
             $doc = Document::find($id);
             if (file_exists(substr($doc->path, 1))) {
-                unlink($doc->path);
+                unlink(substr($doc->path, 1));
             }
             Document::destroy($id);
         }
         if ($request->type == 'address') {
             Address::destroy($id);
         }
+    }
+    public function hiddeRest(Request $request, $id){
+        $restaurant = Restaurant::find($id);
+        if($request->visible == true){
+            $restaurant->visible=1;
+            $restaurant->save();
+        }else{
+            $restaurant->visible=0;
+            $restaurant->save();
+        }
+
+
     }
 
     public function update(Request $request, $id)
@@ -102,7 +115,6 @@ class RestaurantController extends Controller
             );
         }
         $image = $request->file('image');
-
         $image_path = '/img/restaurants/';
         $this->saveFiles(Image::class, $image, $restaurant->id, $image_path);
         $menu = $request->file('menu');
@@ -117,7 +129,6 @@ class RestaurantController extends Controller
                 'restaurant_id' => $restaurant->id]);
         }
         return redirect('/');
-
     }
 
     private function saveFiles($model, $file, $id, $path)
@@ -125,7 +136,6 @@ class RestaurantController extends Controller
         foreach ($file as $img) {
             $extends = $img->getClientOriginalExtension();
             $name = $this->uniqueFileName($model, $extends, $path);
-
 
             $model::create([
                 'path' => $name,

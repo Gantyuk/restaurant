@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRestorant extends FormRequest
+class EditRestorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreRestorant extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,13 +24,7 @@ class StoreRestorant extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:2',
-            'category'=>'required',
-            'short_description'=>'required|min:5|max:150',
-            'description'=>'required|min:15',
-            'image'=>'required',
-            'menu'=>'required',
-            'address'=>'required'
+            //
         ];
     }
 }
