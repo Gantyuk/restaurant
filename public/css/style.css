@@ -50,3 +50,7 @@ footer {
     height: auto;
 }
 
+.parent_comment{
+    border: 2px solid black;
+    padding: 5px;
+}

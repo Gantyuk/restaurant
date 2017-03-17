@@ -38,8 +38,7 @@ class UserController extends Controller
 
     public function profile($id)
     {
-        $user = User::find($id);
-        return view('profile')->with(['user' => $user]);
+        return view('profile')->with(['user' => User::find($id)]);
     }
 
     public function update_profile(Request $request)
@@ -49,11 +48,8 @@ class UserController extends Controller
             'last_name' => 'max:255',
         ]);
         $user = User::find($request['id']);
-        if ($request['first_name'] != '')
             $user->first_name = ucfirst($request['first_name']);
-        if ($request['last_name'] != '')
             $user->last_name = ucfirst($request['last_name']);
-
 
         if ($request->file('image') != '') {
 
