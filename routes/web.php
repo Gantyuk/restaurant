@@ -15,6 +15,8 @@ Route::get('/', 'RestaurantsController@index');
 
 Route::get('restaurant/{id}','RestaurantsController@restaurant')->name('view_restaurant');
 
+Route::get('top_10','RestaurantsController@restaurant_top')->name('top');
+
 Route::get('authentication',function () {
     return view('authentication');
 })->name('authentication');

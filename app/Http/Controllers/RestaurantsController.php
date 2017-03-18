@@ -16,21 +16,18 @@ class RestaurantsController extends Controller
     public function index()
     {
         $restaurants = Restaurant::where('visible', 1)->paginate(5);
-        $mark = [];
-        $category = [];
         foreach ($restaurants as $restaurant):
             $mark["$restaurant->id"] = Mark::where('restaurant_id', $restaurant->id)->avg('mark');
             $img["$restaurant->id"] = Image::find($restaurant->id);
             $category["$restaurant->id"] = CategoryRestaurant::where('restaurant_id', $restaurant->id)->get();
         endforeach;
-        $categoriesRestaurant= [];
         foreach ($category as $categ):
-            $i=0;
+            $i = 0;
             foreach ($categ as $cat):
-                $catProm[$i]= Category::where('id', $cat->category_id)->get();
+                $catProm[$i] = Category::where('id', $cat->category_id)->get();
                 $i++;
             endforeach;
-            $categoriesRestaurant["$cat->restaurant_id"] =$catProm;
+            $categoriesRestaurant["$cat->restaurant_id"] = $catProm;
             unset($catProm);
         endforeach;
         return view('restaurants.restaurants', compact('restaurants', 'img', 'mark', 'categoriesRestaurant'));
@@ -42,6 +39,38 @@ class RestaurantsController extends Controller
         $path_img = Image::where('restaurant_id', $id)->get();
         $mark = Mark::where('restaurant_id', $id)->avg('mark');
         $comments = $restaurant->comments;
-        return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark','comments'));
+        return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark', 'comments'));
+    }
+
+    public function restaurant_top()
+    {
+        $restaurants = Restaurant::where('visible', 1)->get();
+        foreach ($restaurants as $restaurant):
+            $mark["$restaurant->id"] = Mark::where('restaurant_id', $restaurant->id)->avg('mark');
+        endforeach;
+        uasort($mark, function ($a, $b) {
+            if ($a == $b) {
+                return 0;
+            }
+            return ($a > $b) ? -1 : 1;
+        });
+        $mark = array_chunk($mark, 10, true);
+        $mark = $mark[0];
+        foreach ($mark as $key => $value):
+            $topRestoran[$key] = Restaurant::where('visible', 1)->where('id', $key)->get();
+            $img["$key"] = Image::find($key);
+            $category["$key"] = CategoryRestaurant::where('restaurant_id', $key)->get();
+        endforeach;
+        foreach ($category as $categ):
+            $i = 0;
+            foreach ($categ as $cat):
+                $catProm[$i] = Category::where('id', $cat->category_id)->get();
+                $i++;
+            endforeach;
+            $categoriesRestaurant["$cat->restaurant_id"] = $catProm;
+            unset($catProm);
+        endforeach;
+        $i = 1;
+        return view('restaurants.top_10', compact('topRestoran', 'mark', 'img', 'categoriesRestaurant', 'i'));
     }
 }
