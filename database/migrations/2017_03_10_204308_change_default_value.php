@@ -18,9 +18,9 @@ class ChangeDefaultValue extends Migration
             $table->boolean('is_admin')->default(0)->change();
         });
 
-        Schema::table('restaurants', function (Blueprint $table){
-            $table->boolean('visible')->default(1)->change();
-        });
+//        Schema::table('restaurants', function (Blueprint $table){
+//            $table->boolean('visible')->default(1)->change();
+//        });
 
         Schema::drop('messages');
     }

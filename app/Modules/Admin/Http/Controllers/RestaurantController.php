@@ -62,13 +62,12 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::find($id)->first();
 
-        if ($request->visible == true) {
-            $restaurant->visible = 1;
-            $restaurant->save();
-        } else {
+        if ($request->visible == 1) {
+            Restaurant::where('id',$id)->update(['visible'=>1]);
 
-            $restaurant->visible = 0;
-            $restaurant->save();
+        } else {
+            Restaurant::where('id',$id)->update(['visible'=>0]);
+
         }
 
 
