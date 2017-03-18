@@ -39,36 +39,31 @@ class RestaurantController extends Controller
     {
         if ($request->type == 'image') {
             $image = Image::find($id);
-            $path = $image->path;
-            Image::destroy($id);
-            if (file_exists(substr($path, 1))&& $path!='/img/default/rest.jpg') {
-                unlink(substr($path, 1));
+            if (file_exists(substr($image->path, 1))) {
+                unlink(substr($image->path, 1));
             }
+            Image::destroy($id);
         } elseif ($request->type == 'menu') {
             $doc = Document::find($id);
-            $path = $doc->path;
-            Document::destroy($id);
-
-            if (file_exists(substr($doc->path, 1)) && $path!='/img/default/rest.jpg') {
+            if (file_exists(substr($doc->path, 1))) {
                 unlink(substr($doc->path, 1));
             }
+            Document::destroy($id);
         }
         if ($request->type == 'address') {
-            Address::destroy(substr($image->path, 1));
+            Address::destroy($id);
         }
     }
-
-    public function hiddeRest(Request $request, $id)
-    {
-        $restaurant = Restaurant::find($id)->first();
-
-        if ($request->visible == 1) {
-            Restaurant::where('id',$id)->update(['visible'=>1]);
-
-        } else {
-            Restaurant::where('id',$id)->update(['visible'=>0]);
-
+    public function hiddeRest(Request $request, $id){
+        $restaurant = Restaurant::find($id);
+        if($request->visible == true){
+            $restaurant->visible=1;
+            $restaurant->save();
+        }else{
+            $restaurant->visible=0;
+            $restaurant->save();
         }
+        return $id;
 
 
     }
@@ -105,28 +100,7 @@ class RestaurantController extends Controller
                     'lng' => $address['lng'],
                     'restaurant_id' => $restaurant->id]);
             }
-        $this->validateUpdate($id);
         return redirect('/');
-
-    }
-
-    public function validateUpdate($id)
-    {
-        $image = Image::where('restaurant_id',$id)->first();
-        if (!count($image)) {
-           Image::create([
-               'path'=>'/img/default/rest.jpg',
-               'restaurant_id'=>$id,
-           ]);
-        }
-        $doc= Document::where('restaurant_id',$id)->first();
-        if (!count($doc)) {
-           Document::create([
-               'type'=>'image',
-               'path'=>'/img/default/rest.jpg',
-               'restaurant_id'=>$id,
-           ]);
-        }
 
     }
 
