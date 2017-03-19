@@ -7,6 +7,7 @@ use App\Category;
 use App\CategoryRestaurant;
 use App\Document;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditRestaurant;
 use App\Http\Requests\StoreRestorant;
 use App\Image;
 use App\Restaurant;
@@ -35,7 +36,7 @@ class RestaurantController extends Controller
         return view('admin::restaurant.edit', ['category' => $category, 'model' => $restaurant]);
     }
 
-    public function delete(Request $request, $id)
+    public function delete(EditRestaurant $request, $id)
     {
         if ($request->type == 'image') {
             $image = Image::find($id);
@@ -54,16 +55,17 @@ class RestaurantController extends Controller
             Address::destroy($id);
         }
     }
-    public function hiddeRest(Request $request, $id){
+
+    public function hiddeRest(Request $request, $id)
+    {
         $restaurant = Restaurant::find($id);
-        if($request->visible == true){
-            $restaurant->visible=1;
+        if ($request->visible == true) {
+            $restaurant->visible = 1;
             $restaurant->save();
-        }else{
-            $restaurant->visible=0;
+        } else {
+            $restaurant->visible = 0;
             $restaurant->save();
         }
-        return $id;
 
 
     }
@@ -100,8 +102,20 @@ class RestaurantController extends Controller
                     'lng' => $address['lng'],
                     'restaurant_id' => $restaurant->id]);
             }
+        $this->validateUpdate($restaurant->id);
         return redirect('/');
 
+    }
+
+    private function validateUpdate($id)
+    {
+            $image = Image::where('restaurant_id','=',$id)->first();
+            if(count($image)==0){
+               Image::create([
+                   'restaurant_id'=>$id,
+                   'path'=>'/img/default/rest.jpg'
+               ]);
+            }
     }
 
     public function store(StoreRestorant $request)

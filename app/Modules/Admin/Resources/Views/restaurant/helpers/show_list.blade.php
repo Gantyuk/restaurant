@@ -29,7 +29,7 @@
         @foreach($model as $md)
             <?php
                     $a++;
-                    $a=$a%20;
+                    $a=$a%21;
             ?>
             <tr class="even pointer">
                 <td class=" ">{{$md->id}}</td>
