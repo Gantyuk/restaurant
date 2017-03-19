@@ -20,6 +20,10 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::put('/restaurant/{id}','RestaurantController@update');
     Route::delete('/restaurant/{id}','RestaurantController@delete');
     Route::put('/restaurant/hidde/{id}','RestaurantController@hiddeRest');
+
+    Route::get('/user','UserController@index');
+    Route::put('/user/ban/{id}','UserController@ban');
+
 });
 Route::post('/add_address','MapController@create_address');
 Route::post('/check_address','MapController@check_address');

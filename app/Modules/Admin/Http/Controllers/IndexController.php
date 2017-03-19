@@ -15,7 +15,7 @@ class IndexController extends Controller
 
         $count['user'] = User::pluck('id')->count();
         $count['restaurant'] = Restaurant::pluck('id')->count();
-        return view('admin::new',['count'=>$count]);
+        return view('admin::index',['count'=>$count]);
     }
     public function map()
     {
