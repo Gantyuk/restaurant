@@ -9,6 +9,9 @@
     <title>@yield('title')</title>
     <link href="/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen"/>
+    <script src="/jquery/jquery-1.11.2.min.js"></script>
+    <script src="/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
 </head>
 <body>
 
@@ -34,15 +37,35 @@
                     <li><a href="{{ route('authentication') }}">Вхід</a></li>
                     <li><a href="{{ route('registration') }}">Реєстрація</a></li>
                 @else
-                    <li>
-                        <a href="{{route('profile',['id'=> Auth::user()->id])}}">
-                            {{ Auth::user()->first_name }}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->first_name }} <span class="caret"></span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('logout') }}">
-                            Вихід
-                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Вихід
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="GET"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                            <li>
+                                <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
+                                                     document.getElementById('users-form').submit();">
+                                    Змінити профіль
+                                </a>
+                                <form id="users-form" action="{{route('profile',['id'=> Auth::user()->id])}}" method="GET"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
                     </li>
 
             @endif
@@ -73,6 +96,7 @@
             @yield('content')
         </div>
         <div class="col-sm-2 sidenav">
+            {{--Реклама--}}
             {{--<div class="well">
                 <p>ADS</p>
             </div>

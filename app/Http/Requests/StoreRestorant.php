@@ -25,8 +25,12 @@ class StoreRestorant extends FormRequest
     {
         return [
             'name'=>'required|min:2',
-            'short_description'=>'required|min:50|max:150',
-            'description'=>'required|min:150',
+            'category'=>'required',
+            'short_description'=>'required|min:5|max:150',
+            'description'=>'required|min:15',
+            'image'=>'required',
+            'menu'=>'required',
+            'address'=>'required'
         ];
     }
 }

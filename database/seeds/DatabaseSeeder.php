@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Document::class,100)->create();
         factory(App\Comment::class,100)->create();
         factory(App\Category::class,100)->create();
+        factory(App\CategoryRestaurant::class,200)->create();
 
     }
 }
