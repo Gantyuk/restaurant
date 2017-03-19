@@ -17,8 +17,8 @@ class RestaurantsController extends Controller
     {
         $restaurants = Restaurant::where('visible', 1)->paginate(5);
         foreach ($restaurants as $restaurant):
-            $mark["$restaurant->id"] = Mark::where('restaurant_id', $restaurant->id)->avg('mark');
-            $img["$restaurant->id"] = Image::find($restaurant->id);
+            $mark["$restaurant->id"] = $restaurant->marks->avg('mark');
+            $img["$restaurant->id"] = $restaurant->images;
             $category["$restaurant->id"] = CategoryRestaurant::where('restaurant_id', $restaurant->id)->get();
         endforeach;
         foreach ($category as $categ):
@@ -36,8 +36,8 @@ class RestaurantsController extends Controller
     public function restaurant($id)
     {
         $restaurant = Restaurant::find($id);
-        $path_img = Image::where('restaurant_id', $id)->get();
-        $mark = Mark::where('restaurant_id', $id)->avg('mark');
+        $path_img = $restaurant->images;
+        $mark = $restaurant->marks->avg('mark');
         $comments = $restaurant->comments;
         return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark', 'comments'));
     }
@@ -46,7 +46,7 @@ class RestaurantsController extends Controller
     {
         $restaurants = Restaurant::where('visible', 1)->get();
         foreach ($restaurants as $restaurant):
-            $mark["$restaurant->id"] = Mark::where('restaurant_id', $restaurant->id)->avg('mark');
+            $mark["$restaurant->id"] = $restaurant->marks->avg('mark');;
         endforeach;
         uasort($mark, function ($a, $b) {
             if ($a == $b) {
@@ -72,7 +72,7 @@ class RestaurantsController extends Controller
         endforeach;
         $i = 1;
         return view('restaurants.top_10', compact('topRestoran', 'mark', 'img', 'categoriesRestaurant', 'i'));
-        $comments = $restaurant->comments;
-        return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark','comments'));
+
+
     }
 }
