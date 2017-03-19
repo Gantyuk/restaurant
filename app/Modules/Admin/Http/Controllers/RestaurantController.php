@@ -15,9 +15,16 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
-        $model = Restaurant::paginate(20);
+        if($request->search != null) {
+
+            $model = Restaurant::where('name','like', '%'.$request->search.'%')->paginate(20);
+        }
+        else{
+            $model = Restaurant::paginate(20);
+
+        }
         return view('admin::restaurant.show', ['model' => $model]);
     }
 

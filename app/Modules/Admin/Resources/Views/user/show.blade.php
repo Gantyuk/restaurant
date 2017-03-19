@@ -66,9 +66,6 @@
                                         <th class="column-title" style="display: table-cell;">Last Name</th>
                                         <th class="column-title" style="display: table-cell;">date_create</th>
                                         <th class="column-title" style="display: table-cell;">ban</th>
-                                        <th class="column-title no-link last" style="display: table-cell;"><span
-                                                    class="nobr">Action</span>
-                                        </th>
                                         <th class="bulk-actions" colspan="7" style="display: none;">
                                             <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
                                                         class="action-cnt">1 Records Selected</span> ) <i
