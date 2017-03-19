@@ -36,15 +36,16 @@ class RestaurantController extends Controller
         return view('admin::restaurant.edit', ['category' => $category, 'model' => $restaurant]);
     }
 
-    public function delete(EditRestaurant $request, $id)
+    public function delete(Request $request, $id)
     {
-        dd($id);
         if ($request->type == 'image') {
             $image = Image::find($id);
-            if (file_exists(substr($image->path, 1))) {
-                unlink(substr($image->path, 1));
-            }
             Image::destroy($id);
+            $path = $image->path;
+            if (file_exists(substr($path, 1)) && $path != '/img/default/rest.jpg') {
+                unlink(substr($path, 1));
+            }
+
         } elseif ($request->type == 'menu') {
             $doc = Document::find($id);
             if (file_exists(substr($doc->path, 1))) {
