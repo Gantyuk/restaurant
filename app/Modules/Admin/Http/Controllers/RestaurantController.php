@@ -38,6 +38,7 @@ class RestaurantController extends Controller
 
     public function delete(EditRestaurant $request, $id)
     {
+        dd($id);
         if ($request->type == 'image') {
             $image = Image::find($id);
             if (file_exists(substr($image->path, 1))) {
