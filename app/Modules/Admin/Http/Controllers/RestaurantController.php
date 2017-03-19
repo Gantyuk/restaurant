@@ -7,6 +7,7 @@ use App\Category;
 use App\CategoryRestaurant;
 use App\Document;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditRestaurant;
 use App\Http\Requests\StoreRestorant;
 use App\Image;
 use App\Restaurant;
@@ -14,9 +15,16 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
-        $model = Restaurant::paginate(20);
+        if($request->search != null) {
+
+            $model = Restaurant::where('name','like', '%'.$request->search.'%')->paginate(20);
+        }
+        else{
+            $model = Restaurant::paginate(20);
+
+        }
         return view('admin::restaurant.show', ['model' => $model]);
     }
 
@@ -39,10 +47,12 @@ class RestaurantController extends Controller
     {
         if ($request->type == 'image') {
             $image = Image::find($id);
-            if (file_exists(substr($image->path, 1))) {
-                unlink(substr($image->path, 1));
-            }
             Image::destroy($id);
+            $path = $image->path;
+            if (file_exists(substr($path, 1)) && $path != '/img/default/rest.jpg') {
+                unlink(substr($path, 1));
+            }
+
         } elseif ($request->type == 'menu') {
             $doc = Document::find($id);
             if (file_exists(substr($doc->path, 1))) {
@@ -54,13 +64,15 @@ class RestaurantController extends Controller
             Address::destroy($id);
         }
     }
-    public function hiddeRest(Request $request, $id){
+
+    public function hiddeRest(Request $request, $id)
+    {
         $restaurant = Restaurant::find($id);
-        if($request->visible == true){
-            $restaurant->visible=1;
+        if ($request->visible == true) {
+            $restaurant->visible = 1;
             $restaurant->save();
-        }else{
-            $restaurant->visible=0;
+        } else {
+            $restaurant->visible = 0;
             $restaurant->save();
         }
 
@@ -99,8 +111,20 @@ class RestaurantController extends Controller
                     'lng' => $address['lng'],
                     'restaurant_id' => $restaurant->id]);
             }
+        $this->validateUpdate($restaurant->id);
         return redirect('/');
 
+    }
+
+    private function validateUpdate($id)
+    {
+            $image = Image::where('restaurant_id','=',$id)->first();
+            if(count($image)==0){
+               Image::create([
+                   'restaurant_id'=>$id,
+                   'path'=>'/img/default/rest.jpg'
+               ]);
+            }
     }
 
     public function store(StoreRestorant $request)

@@ -22,12 +22,12 @@ class RestaurantsController extends Controller
             $category["$restaurant->id"] = CategoryRestaurant::where('restaurant_id', $restaurant->id)->get();
         endforeach;
         foreach ($category as $categ):
-            $i = 0;
+            $i=0;
             foreach ($categ as $cat):
-                $catProm[$i] = Category::where('id', $cat->category_id)->get();
+                $catProm[$i]= Category::where('id', $cat->category_id)->get();
                 $i++;
             endforeach;
-            $categoriesRestaurant["$cat->restaurant_id"] = $catProm;
+            $categoriesRestaurant["$cat->restaurant_id"] =$catProm;
             unset($catProm);
         endforeach;
         return view('restaurants.restaurants', compact('restaurants', 'img', 'mark', 'categoriesRestaurant'));
@@ -72,5 +72,7 @@ class RestaurantsController extends Controller
         endforeach;
         $i = 1;
         return view('restaurants.top_10', compact('topRestoran', 'mark', 'img', 'categoriesRestaurant', 'i'));
+        $comments = $restaurant->comments;
+        return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark','comments'));
     }
 }

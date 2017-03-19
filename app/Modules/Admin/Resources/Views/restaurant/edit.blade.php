@@ -173,7 +173,7 @@
                         function deleteFile(id, type_m, tr_id) {
                             $.ajax({
                                 type: 'POST',
-                                url: "/admin/restaurant/" + id,
+                                url: "/admin/restaurant/" +id,
                                 data: '_method=delete&_token={{csrf_token()}}&type=' + type_m,
                                 success: function (data) {
                                     $('#' + tr_id).remove();
