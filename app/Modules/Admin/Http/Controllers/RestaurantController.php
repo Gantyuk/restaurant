@@ -11,6 +11,7 @@ use App\Http\Requests\EditRestaurant;
 use App\Http\Requests\StoreRestorant;
 use App\Image;
 use App\Restaurant;
+use App\Schedule;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -111,6 +112,12 @@ class RestaurantController extends Controller
                     'lng' => $address['lng'],
                     'restaurant_id' => $restaurant->id]);
             }
+        for ($i=0;$i<7;$i++){
+            $schud = Schedule::where('restaurant_id',$restaurant->id)->where('day',$i)->first();
+                $schud->start = $request->date[$i]['start'];
+                $schud->end = $request->date[$i]['end'];
+                $schud->save();
+        }
         $this->validateUpdate($restaurant->id);
         return redirect('/');
 
@@ -144,6 +151,16 @@ class RestaurantController extends Controller
         $menu = $request->file('menu');
         $menu_path = '/img/restaurants/menu/';
         $this->saveFiles(Document::class, $menu, $restaurant->id, $menu_path);
+        for ($i=0;$i<7;$i++){
+            Schedule::create([
+                'day'=>$i,
+                'start'=>$request->date[$i]['start'],
+                'end'=>$request->date[$i]['end'],
+                'restaurant_id' => $restaurant->id,
+
+
+            ]);
+        }
         foreach ($request->address as $address) {
             Address::create([
                 'street' => $address['street'],

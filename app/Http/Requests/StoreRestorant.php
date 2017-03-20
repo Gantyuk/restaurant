@@ -24,6 +24,7 @@ class StoreRestorant extends FormRequest
     public function rules()
     {
         return [
+            'date'=>'required',
             'name'=>'required|min:2',
             'category'=>'required',
             'short_description'=>'required|min:5|max:150',

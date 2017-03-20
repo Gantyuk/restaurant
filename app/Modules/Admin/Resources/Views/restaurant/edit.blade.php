@@ -117,6 +117,22 @@
 
                         </div>
                     </div>
+                    <div class="ln_solid"></div>
+
+                    <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}" >
+                        <?php $dowMap = array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');?>
+                        @for($i=0;$i<7;$i++)
+                            <label class="control-label col-md-1 col-sm-1 col-xs-7" for="first-name">{{$dowMap[$i]}} <span
+                                        class="required"></span>
+                            </label>
+                            <div style="padding-top: 15px" class="col-md-2 col-sm-3 col-xs-12">
+                                <input  name="date[{{$i}}][start]" type="time" value="{{$model->schedule[$i]->start}}" id="first-name" required="required"
+                                       class="form-control col-md-4 col-xs-12">
+                                <input name="date[{{$i}}][end]" type="time" value="{{$model->schedule[$i]->end}}" id="first-name"  required="required"
+                                       class="form-control col-md-4 col-xs-12" placeholder="end">
+                            </div>
+                        @endfor
+                    </div>
                     {{-- End Images--}}
 
 

@@ -16,7 +16,7 @@ class Restaurant extends \Eloquent
     }
     public function schedule()
     {
-        return $this->hasOne('App\Schedule');
+        return $this->hasMany('App\Schedule');
     }
 
     public function images()

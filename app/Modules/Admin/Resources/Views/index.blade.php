@@ -21,12 +21,12 @@
                 <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> marks week</span>
+                <span class="count_top"><i class="fa fa-bar-chart"></i> marks week</span>
                 <div class="count">{{$count['marks']}}</div>
                 <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> comments per week</span>
+                <span class="count_top"><i class="fa fa-comment"></i> comments per week</span>
                 <div class="count">{{$count['comments']}}</div>
                 <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
