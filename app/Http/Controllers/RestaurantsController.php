@@ -12,7 +12,7 @@ class RestaurantsController extends Controller
     public function index()
     {
         $restaurants = Restaurant::where('visible', 1)->paginate(5);
-        foreach ($restaurants as $restaurant):
+       /* foreach ($restaurants as $restaurant):
             $mark["$restaurant->id"] = $restaurant->marks->avg('mark');
             $img["$restaurant->id"] = $restaurant->images;
             $category["$restaurant->id"] = CategoryRestaurant::where('restaurant_id', $restaurant->id)->get();
@@ -25,8 +25,8 @@ class RestaurantsController extends Controller
             endforeach;
             $categoriesRestaurant["$cat->restaurant_id"] =$catProm;
             unset($catProm);
-        endforeach;
-        return view('restaurants.restaurants', compact('restaurants', 'img', 'mark', 'categoriesRestaurant'));
+        endforeach;*/
+        return view('restaurants.restaurants', compact('restaurants' ));//, 'img', 'mark', 'categoriesRestaurant'));
     }
     public function restaurant($id)
     {
