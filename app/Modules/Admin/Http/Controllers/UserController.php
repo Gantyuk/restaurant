@@ -18,6 +18,10 @@ class UserController extends Controller
         }
         return view('admin::user.show', ['user' => $user]);
     }
+    public function logout(){
+        \Auth::logout();
+     return   redirect('/');
+    }
 
     public function ban(Request $request, $id)
     {

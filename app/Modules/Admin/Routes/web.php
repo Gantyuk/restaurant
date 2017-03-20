@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
 
     Route::get('/user','UserController@index');
     Route::put('/user/ban/{id}','UserController@ban');
+    Route::get('/logout','UserController@logout');
 
 });
 Route::post('/add_address','MapController@create_address');

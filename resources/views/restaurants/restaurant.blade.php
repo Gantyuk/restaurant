@@ -46,7 +46,7 @@
                             <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
                             <input type="hidden" name="parent_id" id="parent_id" value="0">
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                            <p><textarea rows="3" cols="100" name="comment"></textarea></p>
+                            <p><textarea rows="3" id="comment" cols="100" name="comment"></textarea></p>
                         </div>
                         <button type="submit" class="btn btn-primary">Відправити</button>
                         {{ csrf_field() }}

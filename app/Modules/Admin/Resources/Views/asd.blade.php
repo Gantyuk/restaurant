@@ -105,7 +105,7 @@ $formatted_address = $data_arr[2];
     echo "No map found.";
 }
 }
-?>
+?>R
 
 <div id='address-examples'>
     <div>Address examples:</div>
