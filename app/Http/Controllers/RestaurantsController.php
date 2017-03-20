@@ -16,7 +16,7 @@ class RestaurantsController extends Controller
         $restaurant = Restaurant::find($id);
         $path_img = $restaurant->images;
         $mark = $restaurant->marks->avg('mark');
-        $comments = $restaurant->comments;
+        $comments = $restaurant->comments->where('parent_id', 0);
         return view('restaurants.restaurant', compact('restaurant', 'path_img', 'mark', 'comments'));
     }
     public function restaurant_top()
