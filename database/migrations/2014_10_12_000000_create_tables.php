@@ -59,6 +59,8 @@ class CreateTables extends Migration
             $table->timestamps();
             $table->string('street');
             $table->string('house');
+            $table->double('lat')->default(48,3);
+            $table->double('lng')->default(25,93);
         });
 
         Schema::create('restaurants', function (Blueprint $table) {
@@ -91,7 +93,7 @@ class CreateTables extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();;
+            $table->timestamps();
             $table->string('comment');
             $table->integer('parent_id')->default(0);
             $table->boolean('visible')->default(1);
