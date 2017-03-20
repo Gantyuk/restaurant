@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function () {
     Route::put('/user/ban/{id}','UserController@ban');
     Route::get('/logout','UserController@logout');
 
+
+    Route::get('/restaurant/category','RestaurantController@category');
+    Route::post('/restaurant/category','RestaurantController@saveCategory');
+
 });
 Route::post('/add_address','MapController@create_address');
 Route::post('/check_address','MapController@check_address');

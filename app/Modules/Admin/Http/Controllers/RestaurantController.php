@@ -198,4 +198,15 @@ class RestaurantController extends Controller
             $this->uniqueFileName();
         }
     }
+
+    public function category(){
+
+        return view('admin::restaurant.category');
+    }
+    public function saveCategory(Request $request){
+        Category::create([
+            'name'=>$request->name,
+        ]);
+        return redirect('/admin/restaurant');
+    }
 }
