@@ -39,6 +39,10 @@ Route::post('add_comment', 'CommentController@add_comment')->name('add_comment')
 
 Route::get('category/{id}','RestaurantsController@category')->name('view_restaurant_category');
 
+Route::get('around',function (){
+    return view('location.restaurant_arount');
+});
+
 Route::get('/error',function (){
    return view("ERROR");
 })->name('404');
