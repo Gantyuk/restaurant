@@ -55,8 +55,8 @@ class UserController extends Controller
 
         $file = $request->file('image');
         $file_name = str_random(30) . '.jpg';
-        $file->move('/img/users/', $file_name);
-        $user->path_img = '/img/users/' . $file_name;
+        $file->move('img/users/', $file_name);
+        $user->path_img = 'img/users/' . $file_name;
     }
         $user->save();
         return redirect('/');
