@@ -56,7 +56,17 @@ class UserController extends Controller
         $file = $request->file('image');
         $file_name = str_random(30) . '.jpg';
         $file->move('img/users/', $file_name);
-        $user->path_img = 'img/users/' . $file_name;
+        $user->path_img = '/img/users/' . $file_name;
+    }
+
+
+    if(($request['passwd'] != '')&&($request['new_passwd'] != '')&&($request['repeat_new_passwd'] != '')){
+
+            if($request['passwd'] == $user->password){
+                if($request['new_passwd'] == $request['repeat_new_passwd'] ){
+                    $user->password = $request['new_passwd'];
+                }
+            }
     }
         $user->save();
         return redirect('/');
