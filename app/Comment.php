@@ -14,4 +14,10 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function children_comments()
+    {
+       $children = Comment::where('parent_id', $this->id)->get();
+       return $children;
+    }
 }
