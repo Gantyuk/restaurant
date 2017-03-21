@@ -18,7 +18,8 @@ class RestaurantsController extends Controller
     {
         @$restaurant = Restaurant::find($id) or
         die (view('ERROR'));
-        return view('restaurants.restaurant', compact('restaurant'));
+        $comments = $restaurant->comments->where('parent_id', 0);
+        return view('restaurants.restaurant', compact('restaurant','comments'));
     }
 
     public function restaurant_top()
