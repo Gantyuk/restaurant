@@ -10,4 +10,25 @@ $(document).ready(function () {
      $('.answers').on('click', function () {
          $('.comment'+$(this).attr('comment-id')).slideToggle();
      })
+
+    $('.glyphicon-star-empty').on('click', function () {
+        $id = $(this).attr('id');
+        for($i = $id; $i < 6; $i++){
+            $('#'+ $i).attr('class', 'glyphicon glyphicon-star-empty');
+        }
+        for($i = 1; $i <= $id; $i++){
+            $('#'+ $i).attr('class', 'glyphicon glyphicon-star');
+        }
+
+        $.ajax({
+            method: 'POST',
+            url: url,
+            data: {
+                mark: $id,
+                user_id: $('#user_id').val(),
+                restaurant_id: $('#restaurant_id').val(),
+                _token: token}
+        })
+
+    })
 })

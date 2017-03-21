@@ -77,6 +77,9 @@
                 @if(Auth::user())
                     <div class="panel panel-default">
                         <div class="panel-body">
+                            @for($i=1;$i<6;$i++)
+                                <span id="{{$i}}" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                            @endfor
                             <p><label><h4> Коментувати: </h4></label></p>
                             <img for="comment" src="{{ Auth::user()->path_img }}" align="left" width="100px"
                                  height="100px"
@@ -85,9 +88,9 @@
                             <form action="{{route('add_comment')}}" method="post">
 
                                 <div class="form-group">
-                                    <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
+                                    <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{$restaurant->id}}">
                                     <input type="hidden" name="parent_id" id="parent_id" value="0">
-                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
                                     <p><textarea rows="3" id="comment" cols="100" name="comment"></textarea></p>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Відправити</button>
@@ -129,7 +132,11 @@
             </div>
         </div>
 
-
+    </div>
+    <script>
+        var token = '{{Session::token()}}';
+        var url = '{{route('add_mark')}}';
+    </script>
 
 @endsection
 
