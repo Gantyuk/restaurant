@@ -36,3 +36,5 @@ Route::get('user_marks/{id}','UserController@marks')->name('marks');
 Route::get('user_comments/{id}','UserController@comments')->name('comments');
 Route::post('update','UserController@update_profile')->name('update_profile');
 Route::post('add_comment', 'CommentController@add_comment')->name('add_comment');
+
+Route::get('category/{id}','RestaurantsController@category')->name('view_restaurant_category');

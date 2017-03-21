@@ -86,21 +86,27 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="/">Головна</a></li>
-                <li><a href="/top_10">
-                         ТОП 10 Ресторанів
-                    </a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Категорій<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Украінська кухня</a></li>
-                        <li><a href="#">Румунська кухня</a></li>
-                        <li><a href="#">Китайська кухня</a></li>
-                    </ul>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="/">Головна</a></li>
+                        <li><a href="/top_10">
+                                ТОП 10 Ресторанів
+                            </a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Категорій<span
+                                        class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <?php  $categories = \App\Category::get();?>
+                                @foreach($categories as $category)
+                                    <li><a href="{{route('view_restaurant_category',['id'=>$category->id])}}">{{$category->name}}</a></li>
+                                @endforeach
+                            </ul>
 
-                </li>
-                <li><a href="#">#</a></li>
-            </ul>
+                        </li>
+                        <li><a href="#">#</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <br>
         <div class="col-sm-8 text-left">

@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('title')
-   ТОП 10 Ресторанів!!!
+    ТОП 10 Ресторанів!!!
 @endsection
 
 @section('content')
@@ -9,15 +9,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h4>{{$i }} {{ $restaurant->name}}</h4></div>
                 <div class="panel-body">
-                    <img src="{!! $img[$restaurant->id]->path!!}" align="left" width="44%">
+                    <img src="{!! $restaurant->images[0]->path!!}" align="left" width="44%">
                     <div class="restoran_info">
                         <ul class="list-group">
-                            <li class="list-group-item">Оцінка: {!! $mark[$restaurant->id]  !!}</li>
+                            <li class="list-group-item">Оцінка: {!! $restaurant->marks->avg('mark') !!}</li>
                             <li class="list-group-item">Категорій:
-                                @foreach($categoriesRestaurant[$restaurant->id] as $categ)
-                                    @foreach($categ as $cat)
-                                        {{$cat->name}}
-                                    @endforeach
+                                @foreach($restaurant->categories as $category)
+                                    {{$category->name}}
                                 @endforeach
                             </li>
                             <li class="list-group-item">Адреса:</li>

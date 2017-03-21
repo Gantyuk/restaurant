@@ -11,7 +11,7 @@
             <div class="form-group">
                 {{--galereia--}}
 
-                @foreach($path_img as $img)
+                @foreach($restaurant->images as $img)
                     <div class="col-md-4 col-sm-3 col-xs-7 thumb">
                         <a class="fancyimage" data-fancybox-group="group" href="{{$img->path}}">
                             <img class="img-responsive" src="{{$img->path}}"/>
@@ -28,7 +28,7 @@
             </div>
             {{--*****--}}
             <div class="form-group">
-                <p> Оцінка: {!! $mark !!}</p>
+                <p> Оцінка: {!!  $restaurant->marks->avg('mark')!!}</p>
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
 
-                @foreach($comments as $comment)
+                @foreach($restaurant->comments as $comment)
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <img src="{{ $comment->user->path_img }}" align="left" width="100px" height="100px"
