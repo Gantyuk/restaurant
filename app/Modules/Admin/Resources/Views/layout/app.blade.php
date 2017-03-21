@@ -73,6 +73,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="/admin/restaurant">Show all restaurants</a></li>
                                     <li><a href="/admin/restaurant/create">Create new restaurant</a></li>
+                                    <li><a href="/admin/restaurant/category">Create new category</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-users"></i> User <span class="fa fa-chevron-down"></span></a>

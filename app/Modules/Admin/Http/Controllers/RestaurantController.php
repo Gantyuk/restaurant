@@ -195,7 +195,7 @@ class RestaurantController extends Controller
         if ($name->isEmpty()) {
             return $file_name;
         } else {
-            $this->uniqueFileName();
+            $this->uniqueFileName($obj, $extends, $path);
         }
     }
 

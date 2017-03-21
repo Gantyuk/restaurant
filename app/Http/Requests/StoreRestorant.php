@@ -27,7 +27,7 @@ class StoreRestorant extends FormRequest
             'date'=>'required',
             'name'=>'required|min:2',
             'category'=>'required',
-            'short_description'=>'required|min:5|max:150',
+            'short_description'=>'required|min:5',
             'description'=>'required|min:15',
             'image'=>'required',
             'menu'=>'required',
