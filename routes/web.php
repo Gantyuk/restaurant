@@ -38,3 +38,7 @@ Route::post('update','UserController@update_profile')->name('update_profile');
 Route::post('add_comment', 'CommentController@add_comment')->name('add_comment');
 
 Route::get('category/{id}','RestaurantsController@category')->name('view_restaurant_category');
+
+Route::get('/error',function (){
+   return view("ERROR");
+})->name('404');

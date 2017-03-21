@@ -15,11 +15,11 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(\Auth::check() && \Auth::user()->is_admin){
+        if(\Auth::check() && \Auth::user()->is_admin==1){
             return $next($request);
 
         }
-        redirect()->route('404');
+       return redirect()->route('404');
 
     }
 }

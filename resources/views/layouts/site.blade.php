@@ -13,6 +13,8 @@
     <script src="/jquery/jquery-1.11.2.min.js"></script>
     <script src="/bootstrap-3.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqe3b2zbkqIgwb8CtpJfAWW1KCeiUQhGM&libraries=places"
+            type="text/javascript"></script>
 </head>
 <body>
 
