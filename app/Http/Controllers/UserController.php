@@ -66,6 +66,12 @@ class UserController extends Controller
                 if($request['new_passwd'] == $request['repeat_new_passwd'] ){
                     $user->password = $request['new_passwd'];
                 }
+                else{
+                    return redirect()->back();
+                }
+            }
+            else{
+                return redirect()->back();
             }
     }
         $user->save();
