@@ -97,7 +97,7 @@
 
                                 </tr>
                                 </thead>
-                                <tbody class="address">
+                                <tbody >
 
                                 @foreach($model->images as $image)
                                     <tr class="even pointer " id="img{{$image->id}}">
@@ -167,7 +167,7 @@
 
                                 </tr>
                                 </thead>
-                                <tbody class="address">
+                                <tbody >
                                 @foreach($model->documents as $doc)
                                     <tr class="even pointer " id="menu{{$doc->id}}">
                                         <td>{{$doc->type}}</td>
@@ -263,7 +263,7 @@
                                             <td>{{$adr->street}}</td>
                                             <td>{{$adr->house}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-round btn-info fa fa-trash"
+                                                <button type="button" class="btn btn-round btn-success btn-xs fa fa-trash"
                                                         onclick="deleteFile('{{$adr->id}}','address','address{{$adr->id}}')">delete
                                                 </button>
                                             </td>
