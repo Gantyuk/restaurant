@@ -50,7 +50,7 @@
             navigator.geolocation.getCurrentPosition(function (position) {
 
                 clearTimeout(location_timeout);
-
+alert('in this');
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
                 map.setCenter(new google.maps.LatLng(lat, lng));
