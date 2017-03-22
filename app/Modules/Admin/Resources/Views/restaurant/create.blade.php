@@ -200,7 +200,6 @@
 
                         <div class="ln_solid"></div>
                         <div class="form-group">
-                            <button class="btn btn-primary" type="button">Cancel</button>
                             <button class="btn btn-primary" type="reset">Reset</button>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>

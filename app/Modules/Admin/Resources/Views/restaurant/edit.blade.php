@@ -263,13 +263,16 @@
                                             <td>{{$adr->street}}</td>
                                             <td>{{$adr->house}}</td>
                                             <td>
-                                                {{$adr->id}}
                                                 <button type="button" class="btn btn-round btn-info fa fa-trash"
                                                         onclick="deleteFile('{{$adr->id}}','address','address{{$adr->id}}')">delete
                                                 </button>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                    @endforeach
+                                    <tr class="even pointer">
+                                        {{--addresses--}}
+
+                                    </tr>
                                         {{--new addresses--}}
 
 
@@ -291,7 +294,6 @@
 
                         <div class="ln_solid"></div>
                         <div class="form-group">
-                            <button class="btn btn-primary" onclick="addAddress()" type="button">Cancel</button>
                             <button class="btn btn-primary" type="reset">Reset</button>
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
