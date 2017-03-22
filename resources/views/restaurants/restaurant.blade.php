@@ -28,7 +28,7 @@
             </div>
             {{--*****--}}
             <div class="form-group">
-                <p> Оцінка: </p>
+                <p> Оцінка: {{$restaurant->marks->avg('mark')}}</p>
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">

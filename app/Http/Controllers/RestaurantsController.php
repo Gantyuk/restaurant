@@ -2,16 +2,16 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\CategoryRestaurant;
-use App\Image;
+use Barryvdh\Reflection\DocBlock\Type\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Restaurant;
 
 class RestaurantsController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::where('visible', 1)->paginate(5);
-        return view('restaurants.restaurants', compact('restaurants'));
+        $restaurants = Restaurant::where('visible', 1)->paginate(6);
+        return view('restaurants.restaurants', compact('restaurants'))->with(['categories' => ""]);
     }
 
     public function restaurant($id)
@@ -46,8 +46,8 @@ class RestaurantsController extends Controller
 
     public function category($id)
     {
-        @$restaurant = Restaurant::find($id) or
-        die (view('ERROR'));
-        return view('restaurants.restaurant', compact('restaurant'));
+        $categories = Category::find($id);
+        $entries = $categories->restaurants()->paginate(6);
+        return view('restaurants.restaurants')->with(['restaurants' => $entries])->with(['categories' => $categories->name]);
     }
 }
