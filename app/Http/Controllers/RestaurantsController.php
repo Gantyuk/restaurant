@@ -5,6 +5,7 @@ use App\Category;
 use Barryvdh\Reflection\DocBlock\Type\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Restaurant;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantsController extends Controller
 {
@@ -43,7 +44,16 @@ class RestaurantsController extends Controller
         @$restaurant = Restaurant::find($id) or
         die (view('ERROR'));
         $comments = $restaurant->comments->where('parent_id', 0);
-        return view('restaurants.restaurant', compact('restaurant', 'comments'));
+        $user = Auth::user();
+        if ($user != false) {
+            $mark = $restaurant->marks->where('user_id', $user->id)->first();
+            if ($mark != null)
+                $mark = $mark->mark;
+            else
+                $mark = 0;
+        } else
+            $mark = 0;
+        return view('restaurants.restaurant', compact('restaurant', 'comments', 'mark'));
     }
 
     public function restaurant_top()

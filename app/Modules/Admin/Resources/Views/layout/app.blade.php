@@ -43,7 +43,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                    <a href="/admin" class="site_title"><i class="fa fa-paw"></i> <span>Restaurants!</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -51,7 +51,7 @@
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic">
-                        <img src="/{{Auth::user()->path_img}}" alt="..." class="img-circle profile_img">
+                        <img src="{{Auth::user()->path_img}}" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
@@ -92,7 +92,7 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                    <a data-toggle="tooltip" data-placement="top" title="Change profil">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                     </a>
                     <a data-toggle="tooltip" data-placement="top" title="FullScreen">
@@ -120,17 +120,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/{{Auth::user()->path_img}}" alt="">John Doe
+                                <img src="{{Auth::user()->path_img}}" alt="">{{Auth::user()->first_name}}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profile</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
+                                <li><a href="/user/{{Auth::user()->id}}">Change profile</a></li>
+
                                 <li><a href="javascript:;">Help</a></li>
                                 <li><a href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>

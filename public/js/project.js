@@ -1,5 +1,15 @@
 $(document).ready(function () {
     $('.children_comments').hide();
+    $mark = $('#user_id').attr('user-mark');
+    for($i = $mark; $i < 6; $i++){
+        $('#'+ $i).attr('class', 'glyphicon glyphicon-star-empty');
+    }
+    for($i = 1; $i <= $mark; $i++){
+        $('#'+ $i).attr('class', 'glyphicon glyphicon-star');
+    }
+
+
+
     $('.parent_comment').on('click', function () {
         $('#comment').val($(this).attr('data-user-name')+', ');
         $('#parent_id').val($(this).attr('data-user-id'));
@@ -11,7 +21,7 @@ $(document).ready(function () {
          $('.comment'+$(this).attr('comment-id')).slideToggle();
      })
 
-    $('.glyphicon-star-empty').on('click', function () {
+    $('.glyphicon').on('click', function () {
         $id = $(this).attr('id');
         for($i = $id; $i < 6; $i++){
             $('#'+ $i).attr('class', 'glyphicon glyphicon-star-empty');
