@@ -103,7 +103,7 @@
                         <div class="panel " style="border-top: solid; border-color: whitesmoke">
                             <div class="panel-body">
 
-                                <p><label><h4> Коментувати: </h4></label></p>
+                                <p><label> Коментувати: </label></p>
                                 <img for="comment" src="{{ Auth::user()->path_img }}" align="left" width="50px"
                                      height="50px"
                                      class="img-circle"
@@ -115,7 +115,7 @@
                                         <input type="hidden" id="restaurant_id" name="restaurant_id"
                                                value="{{$restaurant->id}}">
                                         <input type="hidden" name="parent_id" id="parent_id" value="0">
-                                        <input type="hidden" id="user_id" name="user_id"
+                                        <input type="hidden" id="user_id" name="user_id"  user-mark="{{$mark}}"
                                                value="{{ Auth::user()->id }}">
                                         <p >
 <textarea rows="2" id="comment" name="comment"
@@ -142,7 +142,7 @@
                                 <img src="{{ $comment->user->path_img }}" align="left" width="80px"
                                      height="80px"
                                      class="img-circle">
-                                <h4>{{$comment->user->first_name}}</h4>
+                               <p style="font-size: 24px">{{$comment->user->first_name}}</p>
                                 <p>{{$comment->comment}}</p>
                                 <a class="parent_comment btn btn-link" data-user-id="{{$comment->id}}"
                                    data-user-name="{{$comment->user->first_name}}">Відповісти »</a>
@@ -150,7 +150,7 @@
 
                                 @if($comment->children_comments() != null)
                                     <p align="right" class="answers" comment-id="{{$comment->id}}">Відповіді</p>
-                                    @foreach($comment->children_comments() as $children_comment))
+                                    @foreach($comment->children_comments() as $children_comment)
                                     <p class="children_comments comment{{$comment->id}}">
                                         <img src="{{ $comment->user->path_img }}" align="left" width="40px"
                                              height="40px"
