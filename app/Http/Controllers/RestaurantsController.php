@@ -147,9 +147,11 @@ class RestaurantsController extends Controller
     public function around(Request $request)
     {
         if ($request->lat != 0) {
-           $a = \DB::select('SELECT * , ( 6371 * acos( cos( radians(48.2602292) ) * cos( radians( addresses.lat ) ) * cos( radians( addresses.lng ) - radians(25.9544632) ) + sin( radians(48.2602292) ) * sin( radians( addresses.lat ) ) ) ) AS distance 
-FROM addresses HAVING distance < 398 ORDER BY distance LIMIT 0 , 20;');
-           return $a;
+            $restaurant = \DB::select('SELECT * , ( 6371 * acos( cos( radians(48.2602292) ) 
+            * cos( radians( addresses.lat ) ) * cos( radians( addresses.lng ) - radians(25.9544632) ) 
+            + sin( radians(48.2602292) ) * sin( radians( addresses.lat ) ) ) ) AS distance 
+            FROM addresses HAVING distance < 2 ORDER BY distance LIMIT 0 , 20;');
+            return $restaurant;
         } else {
             return view('location.restaurant_arount');
 

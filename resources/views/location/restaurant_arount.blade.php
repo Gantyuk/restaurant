@@ -65,14 +65,16 @@
                     url: '/around',
                     data: 'lat='+lat+'&lng='+lng,
                     success: function(data){
-                        alert('i am in thi');
-                        var ii = new google.maps.LatLng(data[1]['lat'], data[1]['lng']);
-                        var markersq = new google.maps.Marker({
-                            position: ii,
-                            map: map
-
-                        });
-                        alert(data[1]['lat']);
+                        alert(data.length);
+                        var markersq = [];
+                        for(var i =0; i < data.length; i++){
+                            var ii = new google.maps.LatLng(data[i]['lat'], data[i]['lng']);
+                           markersq[i] = new google.maps.Marker({
+                                position: ii,
+                                map:map,
+                            });
+                        }
+                        marker.push(markersq);
 
                     }
                 });
