@@ -43,3 +43,7 @@ Route::get('category/{id}','RestaurantsController@category')->name('view_restaur
 Route::get('/error',function (){
    return view("ERROR");
 })->name('404');
+
+Route::get('around',function (){
+    return view('location.restaurant_arount');
+});

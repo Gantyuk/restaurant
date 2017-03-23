@@ -10,6 +10,7 @@ class RestaurantsController extends Controller
 {
     public function index()
     {
+
         if (isset($_GET['startFrom'])) {
             $startFrom = $_GET['startFrom'];
 // Получаем 10 статей, начиная с последней отображеннойleftJoin('images', 'restaurants.id', '=', 'images.restaurant_id')

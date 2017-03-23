@@ -36,7 +36,7 @@ function addAddress() {
             $("tbody.address").append("<tr class=\"even pointer\" id=\"add" + count + "\">" +
                 "<td class=\" \">" + data['street'] + "</td>" +
                 "<td class=\" \">" + data['house'] + "</td>" +
-                "<td class=\" \"><button onclick='deleteAdress(" + count + ")'>delete</button>" +
+                "<td class=\" \"><button class='btn btn-round btn-info btn-xs' onclick='deleteAdress("+count+")' type='button' >delete</button>" +
                 "<input type=\"text\" name='address[" + count + "][street]' hidden value=\"" + data['street'] + "\">" +
                 "<input type=\"text\" name='address[" + count + "][house]' hidden value=\"" + data['house'] + "\">" +
                 "<input type=\"text\" name='address[" + count + "][lat]' hidden value=\"" + data['lat'] + "\">" +
@@ -47,7 +47,8 @@ function addAddress() {
     });
 }
 function deleteAdress(id) {
-    $("#add" + id).remove();
+
+    $('#add'+id).remove();
 }
 
 document.getElementById("uploadBtn").onchange = function () {

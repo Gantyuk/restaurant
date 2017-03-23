@@ -5,10 +5,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-
     <title>@yield('title')</title>
     <link href="/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="/css/jquery.fancybox.css" type="text/css" media="screen"/>
     <script src="/js/sidenav.js"></script>
     <script src="/jquery/jquery-1.11.2.min.js"></script>
     <script src="/bootstrap-3.3.2/js/bootstrap.min.js"></script>
@@ -146,4 +146,6 @@
 </body>
 <script src="/jquery/jquery-1.11.2.min.js"></script>
 <script src="/js/project.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.pack.js"></script>
+
 </html>
