@@ -25,7 +25,7 @@
                             {!! $restaurant->name !!}
                         </a>
                     </h4>
-                    <p>Оцінка:{{$restaurant->marks->avg('mark')}} | <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 365 |
+                    <p>Оцінка:<span class="badge"> {{@round($restaurant->marks->avg('mark'),2)}}</span>| <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> 365 |
                         <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span> 4 | <span
                                 class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> +5 <span
                                 class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></p>

@@ -43,3 +43,5 @@ Route::get('category/{id}','RestaurantsController@category')->name('view_restaur
 Route::get('/error',function (){
    return view("ERROR");
 })->name('404');
+
+Route::get('user_profil/{id}','UserController@profileUser')->name('profileUser');

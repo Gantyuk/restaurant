@@ -58,6 +58,16 @@
                             </li>
                             <li>
                                 <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
+                                                     document.getElementById('usersprof-form').submit();">
+                                    Профіль
+                                </a>
+                                <form id="usersprof-form" action="{{route('profileUser',['id'=> Auth::user()->id])}}"
+                                      method="GET"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            <li>
+                                <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
                                                      document.getElementById('users-form').submit();">
                                     Змінити профіль
                                 </a>
