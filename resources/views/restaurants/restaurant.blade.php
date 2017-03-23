@@ -135,30 +135,6 @@
                         @endif
                         <div class="form-group">
 
-                    @foreach($comments as $comment)
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="{{ $comment->user->path_img }}" align="left" width="100px" height="100px"
-                                     class="img-circle">
-                                <h4>{{$comment->user->first_name}}</h4>
-                                <p>{{$comment->comment}}</p>
-                                <a class="parent_comment btn btn-info" data-user-id="{{$comment->id}}"
-                                   data-user-name="{{$comment->user->first_name}}">Відповісти</a>
-                                <p align="right">{{$comment->created_at}}</p>
-
-                                @if($comment->children_comments() != null)
-
-                                    <p align="right" class="answers" comment-id="{{$comment->id}}">Відповіді</p>
-                                    @foreach($comment->children_comments() as $children_comment)
-                                        <p class="children_comments comment{{$comment->id}}">
-                                            <b>{{$children_comment->user->first_name}}</b>
-                                            => {{$children_comment->comment}}</p>
-                                        <a class="btn parent_comment children_comments comment{{$comment->id}}"
-                                           data-user-id="{{$comment->id}}"
-                                           data-user-name="{{$children_comment->user->first_name}}">Відповісти</a>
-                                    @endforeach
-                                @endif
-                                {{--{{$comment->children_comments()}}--}}
                             @foreach($comments as $comment)
                                 <div class="panel panel-default">
                                     <div class="panel-body">
@@ -167,7 +143,7 @@
                                              class="img-circle">
                                         <h4>{{$comment->user->first_name}}</h4>
                                         <p>{{$comment->comment}}</p>
-                                        <a class="parent_comment btn btn-link" data-user-id="{{$comment->user->id}}"
+                                        <a class="parent_comment btn btn-link" data-user-id="{{$comment->id}}"
                                            data-user-name="{{$comment->user->first_name}}">Відповісти >></a>
                                         <p align="right">{{$comment->created_at}}</p>
 
@@ -175,8 +151,10 @@
                                             <p align="right" class="answers" comment-id="{{$comment->id}}">Відповіді</p>
                                             @foreach($comment->children_comments() as $children_comment)
                                                 <p class="children_comments comment{{$comment->id}}">
-                                                    <b>{{$children_comment->user->first_name}}</b>
-                                                    => {{$children_comment->comment}}</p>
+                                                    <img src="{{ $comment->user->path_img }}" align="left" width="40px"
+                                                         height="40px"
+                                                         class="img-circle">
+                                                 {{$children_comment->comment}}</p>
                                                 <a class=" btn  parent_comment children_comments comment{{$comment->id}}"
                                                    data-user-id="{{$comment->id}}"
                                                    data-user-name="{{$children_comment->user->first_name}}">Відповісти</a>
@@ -244,7 +222,7 @@
                 <div class="panel panel-default" style="min-height: 70%">
                     <div class="panel-body">
                         <div class="panel">
-                    @foreach($restaurant->images as $image)
+                            @foreach($restaurant->images as $image)
 
 
                                 <div class="col-md-3 col-sm-4 col-xs-6 thumb">
@@ -253,7 +231,7 @@
                                     </a>
                                 </div>
 
-                    @endforeach
+                            @endforeach
                         </div>
 
                     </div>
@@ -264,11 +242,11 @@
             <div id="home" class="tab-pane fade in active">
                 <div class="panel panel-default" style="min-height: 70%">
                     <div class="panel-body">
-                    @foreach($restaurant->documents as $coment)
-                        <div class="panel">
-                            <iframe src="{{$coment->path}}" width="100%" height="100%" alt="Попробуйте в другом браузере"></iframe>
-                        </div>
-@endforeach
+                        @foreach($restaurant->documents as $coment)
+                            <div class="panel">
+                                <iframe src="{{$coment->path}}" width="100%" height="100%" alt="Попробуйте в другом браузере"></iframe>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
