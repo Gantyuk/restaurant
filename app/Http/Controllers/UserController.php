@@ -41,6 +41,11 @@ class UserController extends Controller
         return view('profile')->with(['user' => User::find($id)]);
     }
 
+    public function profileUser($id)
+    {
+        return view('UserProfail')->with(['user' => User::find($id)]);
+    }
+
     public function update_profile(Request $request)
     {
        $this->validate($request, [
