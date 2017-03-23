@@ -45,3 +45,5 @@ Route::get('/error',function (){
 })->name('404');
 
 Route::get('user_profil/{id}','UserController@profileUser')->name('profileUser');
+
+Route::post('search','RestaurantsController@search')->name('search_restorans');

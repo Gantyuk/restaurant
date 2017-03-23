@@ -8,12 +8,13 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="panel-body">
-                <img src="{!! $user->path_img!!}" align="left" width="44%">
+                <img class = "img-thumbnail"src="{!! $user->path_img!!}" align="left" width="44%">
                 <div class="restoran_info">
                     <h3><span class="label label-default">
                         {{$user->first_name}} {{ $user->last_name }}
-                    </span></h3>
+                    </span></h3><br />
 
+                  <p> <h5> <span class="label label-info">Емаіл: {{$user->email}}</span></h5></p>
 
                     {{--<form class="form-horizontal" role="form" action="{{route('update_profile')}}" method="post"--}}
                     {{--enctype="multipart/form-data">--}}
