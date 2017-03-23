@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         'admin/restaurant/create',
-        'add_address'
+        'add_address',
+        'add_mark'
     ];
 }

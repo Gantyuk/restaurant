@@ -10,7 +10,10 @@ class RestaurantsController extends Controller
 {
     public function index()
     {
+        $model = Category::where('name','like','%Ресторан з національною специфікою%')->first();
+//        dd($model->restaurants()->get());
         $restaurants = Restaurant::where('visible', 1)->paginate(5);
+
         return view('restaurants.restaurants', compact('restaurants'));
     }
 
