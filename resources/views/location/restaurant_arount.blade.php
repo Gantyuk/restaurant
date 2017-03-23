@@ -50,9 +50,9 @@
             navigator.geolocation.getCurrentPosition(function (position) {
 
                 clearTimeout(location_timeout);
-alert('in this');
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
+
                 map.setCenter(new google.maps.LatLng(lat, lng));
                 map.setZoom = 20;
                 var i = new google.maps.LatLng(lat, lng);
@@ -60,6 +60,23 @@ alert('in this');
                     position: i,
                     map: map
                 });
+                $.ajax({
+                    type: 'GET',
+                    url: '/around',
+                    data: 'lat='+lat+'&lng='+lng,
+                    success: function(data){
+                        alert('i am in thi');
+                        var ii = new google.maps.LatLng(data[1]['lat'], data[1]['lng']);
+                        var markersq = new google.maps.Marker({
+                            position: ii,
+                            map: map
+
+                        });
+                        alert(data[1]['lat']);
+
+                    }
+                });
+
                 map.setZoom(18);
                 marker.push(markers);
                 geocodeLatLng(lat, lng);

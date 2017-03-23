@@ -2,10 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Barryvdh\Reflection\DocBlock\Type\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Http\Request;
 use App\Restaurant;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RestaurantsController extends Controller
@@ -142,7 +140,19 @@ class RestaurantsController extends Controller
             $restaurants = Restaurant::where('visible', 1)->where('name', 'like', '%' . $request['search'] . '%')
                 ->limit(6)->get();
             return view('restaurants.restaurants', compact('restaurants'))->with(['categories' => ""]);
-       }
+        }
 
+    }
+
+    public function around(Request $request)
+    {
+        if ($request->lat != 0) {
+           $a = \DB::select('SELECT * , ( 6371 * acos( cos( radians(48.2602292) ) * cos( radians( addresses.lat ) ) * cos( radians( addresses.lng ) - radians(25.9544632) ) + sin( radians(48.2602292) ) * sin( radians( addresses.lat ) ) ) ) AS distance 
+FROM addresses HAVING distance < 398 ORDER BY distance LIMIT 0 , 20;');
+           return $a;
+        } else {
+            return view('location.restaurant_arount');
+
+        }
     }
 }

@@ -48,6 +48,5 @@ Route::get('user_profil/{id}','UserController@profileUser')->name('profileUser')
 
 Route::post('search','RestaurantsController@search')->name('search_restorans');
 
-Route::get('around',function (){
-    return view('location.restaurant_arount');
-});
+Route::get('around','RestaurantsController@around');
+
