@@ -115,7 +115,7 @@
                                         <input type="hidden" id="restaurant_id" name="restaurant_id"
                                                value="{{$restaurant->id}}">
                                         <input type="hidden" name="parent_id" id="parent_id" value="0">
-                                        <input type="hidden" id="user_id" name="user_id"
+                                        <input type="hidden" id="user_id" name="user_id" user-mark = "{{$mark}}"
                                                value="{{ Auth::user()->id }}">
                                         <p >
 <textarea rows="2" id="comment" name="comment"
