@@ -15,6 +15,8 @@
     <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqe3b2zbkqIgwb8CtpJfAWW1KCeiUQhGM&libraries=places"
             type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
 
@@ -35,6 +37,7 @@
                 <li><a href="#">Контакти</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ route('authentication') }}">Вхід</a></li>

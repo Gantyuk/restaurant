@@ -10,8 +10,31 @@ class RestaurantsController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::where('visible', 1)->paginate(6);
-        return view('restaurants.restaurants', compact('restaurants'))->with(['categories' => ""]);
+        if (isset($_GET['startFrom'])) {
+            $startFrom = $_GET['startFrom'];
+// Получаем 10 статей, начиная с последней отображеннойleftJoin('images', 'restaurants.id', '=', 'images.restaurant_id')
+            $restaurants = Restaurant::where('visible', 1)->offset($startFrom)->limit(6)->get();
+// Превращаем массив статей в json-строку для передачи через Ajax-запрос
+            $data = [];
+            $img = [];
+            $address = [];
+            $mark = [];
+            foreach ($restaurants as $restaurant):
+                $img[$restaurant->id] = $restaurant->images[0]->path;
+                foreach ($restaurant->addresses as $addres)
+                    $address[$restaurant->id] = $addres->street . ',' . $addres->house;
+                $mark[$restaurant->id] = $restaurant->marks->avg('mark');
+            endforeach;
+
+            $data['restaurants'] = $restaurants;
+            $data['img'] = $img;
+            $data['address'] = $address;
+            $data['mark'] = $mark;
+            echo json_encode($data);
+        } else {
+            $restaurants = Restaurant::where('visible', 1)->limit(6)->get();
+            return view('restaurants.restaurants', compact('restaurants'))->with(['categories' => ""]);
+        }
     }
 
     public function restaurant($id)
@@ -19,7 +42,7 @@ class RestaurantsController extends Controller
         @$restaurant = Restaurant::find($id) or
         die (view('ERROR'));
         $comments = $restaurant->comments->where('parent_id', 0);
-        return view('restaurants.restaurant', compact('restaurant','comments'));
+        return view('restaurants.restaurant', compact('restaurant', 'comments'));
     }
 
     public function restaurant_top()
@@ -46,8 +69,32 @@ class RestaurantsController extends Controller
 
     public function category($id)
     {
+        if (isset($_GET['startFrom'])) {
+            $startFrom = $_GET['startFrom'];
+// Получаем 10 статей, начиная с последней отображеннойleftJoin('images', 'restaurants.id', '=', 'images.restaurant_id')
+            $categories = Category::find($id);
+            $restaurants = $categories->restaurants()->offset($startFrom)->limit(6)->get();
+// Превращаем массив статей в json-строку для передачи через Ajax-запрос
+            $data = [];
+            $img = [];
+            $address = [];
+            $mark = [];
+            foreach ($restaurants as $restaurant):
+                $img[$restaurant->id] = $restaurant->images[0]->path;
+                foreach ($restaurant->addresses as $addres)
+                    $address[$restaurant->id] = $addres->street . ',' . $addres->house;
+                $mark[$restaurant->id] = $restaurant->marks->avg('mark');
+            endforeach;
+
+            $data['restaurants'] = $restaurants;
+            $data['img'] = $img;
+            $data['address'] = $address;
+            $data['mark'] = $mark;
+            echo json_encode($data);
+        } else {
         $categories = Category::find($id);
-        $entries = $categories->restaurants()->paginate(6);
+        $entries = $categories->restaurants()->limit(6)->get();
         return view('restaurants.restaurants')->with(['restaurants' => $entries])->with(['categories' => $categories->name]);
+        }
     }
 }
