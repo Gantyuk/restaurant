@@ -56,6 +56,9 @@
                                     <a href="{{route('marks', ['id'=>Auth::user()->id])}}">Мої оцінки</a>
                                 </li>
                                 <li>
+                                    <a href="/around">Найблищі ресторани</a>
+                                </li>
+                                <li>
                                     <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
                                                      document.getElementById('usersprof-form').submit();">
                                         Профіль

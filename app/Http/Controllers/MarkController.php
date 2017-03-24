@@ -12,13 +12,16 @@ class MarkController extends Controller
     public function add_mark(Request $request)
     {
         $marks = Mark::all();
+        $Mark=[];
         foreach ($marks as $mark){
             if(($mark->user_id == $request['user_id'])&& ($mark->restaurant_id == $request['restaurant_id'])){
                 $Mark = $mark;
+                break;
             }
             else
                 $Mark = new Mark();
         }
+
         $user = User::find($request['user_id']);
         $restaurant = Restaurant::find($request['restaurant_id']);
         $Mark->mark = $request['mark'];

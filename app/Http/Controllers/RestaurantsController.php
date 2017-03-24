@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Category;
 use App\Restaurant;
 use Illuminate\Http\Request;
@@ -144,14 +145,10 @@ class RestaurantsController extends Controller
 
     }
 
-    public function around(Request $request)
+    public function around(Request $request,Address $address)
     {
         if ($request->lat != 0) {
-            $restaurant = \DB::select('SELECT * , ( 6371 * acos( cos( radians(48.2602292) ) 
-            * cos( radians( addresses.lat ) ) * cos( radians( addresses.lng ) - radians(25.9544632) ) 
-            + sin( radians(48.2602292) ) * sin( radians( addresses.lat ) ) ) ) AS distance 
-            FROM addresses HAVING distance < 2 ORDER BY distance LIMIT 0 , 20;');
-            return $restaurant;
+            return $address->around($request->lat, $request->lng);
         } else {
             return view('location.restaurant_arount');
 

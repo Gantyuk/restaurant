@@ -40,6 +40,9 @@
             draggable: true
 
         });
+
+            marker.setMap(null);
+
         var markers = [];
         // [START region_getplaces]
         // Listen for the event fired when the user selects a prediction and retrieve
@@ -55,17 +58,28 @@
 
                 map.setCenter(new google.maps.LatLng(lat, lng));
                 map.setZoom = 20;
+
                 var i = new google.maps.LatLng(lat, lng);
                 var markers = new google.maps.Marker({
                     position: i,
                     map: map
                 });
+                var cityCircle = new google.maps.Circle({
+                    strokeColor: '#0d94b1',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#a5e8f7',
+                    fillOpacity: 0.15,
+                    map: map,
+                    center: i,
+                    radius: 500
+                });
+
                 $.ajax({
                     type: 'GET',
                     url: '/around',
                     data: 'lat='+lat+'&lng='+lng,
                     success: function(data){
-                        alert(data.length);
                         var markersq = [];
                         for(var i =0; i < data.length; i++){
                             var ii = new google.maps.LatLng(data[i]['lat'], data[i]['lng']);
@@ -82,12 +96,14 @@
                 map.setZoom(18);
                 marker.push(markers);
                 geocodeLatLng(lat, lng);
+
             }, function (error) {
                 clearTimeout(location_timeout);
             });
         } else {
             geolocFail();
         }
+
 
 
     </script>
