@@ -4,11 +4,18 @@
 @endsection
 
 @section('content')
-
+    <div class="row">
 @foreach($comments as $comment)
-    <h3>RESTAURANT:  {{$comment->restaurant->name}}</h3>
-    <h4>SHORT DESCRIPTION: </h4><p>{{$comment->restaurant->short_description}}</p>
-    <h4>YOUR COMMENT: </h4><p>{{$comment->comment}}</p>
-    <p align="right">{{$comment->created_at}}</p>
+    <div class="col-sm-6">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4> <span class="label label-info">РЕСТОРАН : {{$comment->restaurant->name}}</span></h4></div>
+        <div class="panel-body">
+
+            <span class="label label-primary">Ваш коментар: </span><br /><br /><p>{{$comment->comment}}</p>
+            <p align="right"><span class="label label-success">{{$comment->created_at}}</span></p>
+        </div>
+    </div>
+    </div>
 @endforeach
+    </div>
     @endsection
