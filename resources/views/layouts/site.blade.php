@@ -39,31 +39,39 @@
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ route('authentication') }}">Вхід</a></li>
-                        <li><a href="{{ route('registration') }}">Реєстрація</a></li>
+                        <li>
+                            <a href="{{ route('authentication') }}"><span class="glyphicon glyphicon-log-in"></span>
+                                Вхід</a>
+                        </li>
+                        <li><a href="{{ route('registration') }}"><span class="glyphicon glyphicon-new-window"></span>
+                                Реєстрація</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
                                 {{ Auth::user()->first_name }} <span class="caret"></span>
-                                <img src="{{Auth::user()->path_img }}" alt="" width="20px" height="20px" class="img-circle">
+                                <img src="{{Auth::user()->path_img }}" alt="" width="20px" height="20px"
+                                     class="img-circle">
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{route('comments', ['id'=>Auth::user()->id])}}">Мої коментарі</a>
+                                    <a href="{{route('comments', ['id'=>Auth::user()->id])}}">
+                                        <span class=" glyphicon glyphicon-comment"></span> Мої коментарі</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('marks', ['id'=>Auth::user()->id])}}">Мої оцінки</a>
+                                    <a href="{{route('marks', ['id'=>Auth::user()->id])}}">
+                                        <span class="glyphicon glyphicon-star-empty"></span> Мої оцінки</a>
                                 </li>
-                                <li>
-                                    <a href="/around">Найблищі ресторани</a>
-                                </li>
+
                                 <li>
                                     <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
                                                      document.getElementById('usersprof-form').submit();">
+                                        <span class="glyphicon glyphicon-user"></span>
                                         Профіль
                                     </a>
-                                    <form id="usersprof-form" action="{{route('profileUser',['id'=> Auth::user()->id])}}"
+                                    <form id="usersprof-form"
+                                          action="{{route('profileUser',['id'=> Auth::user()->id])}}"
                                           method="GET"
                                           style="display: none;">
                                         {{ csrf_field() }}
@@ -71,6 +79,7 @@
                                 <li>
                                     <a href="{{route('profile',['id'=> Auth::user()->id])}}" onclick="event.preventDefault();
                                                      document.getElementById('users-form').submit();">
+                                        <span class="glyphicon glyphicon-cog"></span>
                                         Змінити профіль
                                     </a>
                                     <form id="users-form" action="{{route('profile',['id'=> Auth::user()->id])}}"
@@ -83,7 +92,7 @@
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="icon-share"></i> Вихід
+                                        <span class="glyphicon glyphicon-log-out"></span> Вихід
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="GET"
@@ -96,13 +105,13 @@
 
                     @endif
                 </ul>
-            <form class="navbar-form navbar-left" action="{{route('search_restorans')}}" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Пошук" name="search">
-                </div>
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-primary">Пошук</button>
-            </form>
+                <form class="navbar-form navbar-left" action="{{route('search_restorans')}}" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Пошук" name="search">
+                    </div>
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Пошук</button>
+                </form>
 
         </div>
     </div>
@@ -115,20 +124,29 @@
                 <div class="panel-heading">
                     <ul class="nav nav-pills nav-stacked">
                         <li><a href="/">Головна</a></li>
-                        <li><a href="/top_10">
-                                ТОП 10 Ресторанів
+                        <li><a href="/top_10"><span class="glyphicon glyphicon-list-alt"></span>
+                                ТОП 10
                             </a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Категорій<span
-                                        class="caret"></span></a>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                                    Категорій
+                                <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <?php  $categories = \App\Category::get();?>
                                 @foreach($categories as $category)
-                                    <li><a href="{{route('view_restaurant_category',['id'=>$category->id])}}">{{$category->name}}</a></li>
+                                    <li>
+                                        <a href="{{route('view_restaurant_category',['id'=>$category->id])}}"><span class="glyphicon glyphicon-tag"></span> {{$category->name}}</a>
+                                    </li>
                                 @endforeach
                             </ul>
 
                         </li>
-                        <li><a href="#">#</a></li>
+                        <li>
+                            <a href="/around">
+                                <span class="glyphicon glyphicon-globe"></span>
+                                Поблизу
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -160,7 +178,7 @@
 </div>
 
 <footer class="container-fluid text-center">
-    <p>Автори: © 2017</p>
+    <p>Автори: Гантюк , Плишкина , Миндреску <span class="glyphicon glyphicon-copyright-mark"></span> 2017</p>
 </footer>
 
 </body>
