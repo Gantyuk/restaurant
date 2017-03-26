@@ -32,7 +32,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Головна</a></li>
+                <li class="active"><a href="/">
+                        <span class="glyphicon glyphicon-home"></span> Головна</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <ul class="nav navbar-nav navbar-right">
@@ -123,7 +124,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="/">Головна</a></li>
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span> Головна</a></li>
                         <li><a href="/top_10"><span class="glyphicon glyphicon-list-alt"></span>
                                 ТОП 10
                             </a></li>
