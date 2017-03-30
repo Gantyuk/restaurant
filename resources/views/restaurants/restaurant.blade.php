@@ -150,9 +150,9 @@
 
                                 @if($comment->children_comments() != null)
                                     <p align="right" class="answers" comment-id="{{$comment->id}}">Відповіді</p>
-                                    @foreach($comment->children_comments() as $children_comment))
+                                    @foreach($comment->children_comments() as $children_comment)
                                     <p class="children_comments comment{{$comment->id}}">
-                                        <img src="{{ $comment->user->path_img }}" align="left" width="40px"
+                                        <img src="{{ $children_comment->user->path_img }}" align="left" width="40px"
                                              height="40px"
                                              class="img-circle">
                                         {{$children_comment->comment}}</p>

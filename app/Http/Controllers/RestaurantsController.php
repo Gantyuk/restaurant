@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Category;
 use App\Restaurant;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Webklex\IMAP\Client;
+
+
+
 
 class RestaurantsController extends Controller
 {
+
+    public function salamandra(User $user,Restaurant $restaurant,Request $request){
+        echo \Crypt::encrypt('12345678',false);
+        dump($restaurant);
+        dump($request);
+        return $request->old('name');
+    }
     public function index()
     {
 
@@ -21,8 +33,10 @@ class RestaurantsController extends Controller
             $img = [];
             $address = [];
             $mark = [];
+            $count_comment =[];
             foreach ($restaurants as $restaurant):
                 $img[$restaurant->id] = $restaurant->images[0]->path;
+                $count_comment[$restaurant->id] = count($restaurant->comments);
                 foreach ($restaurant->addresses as $addres)
                     $address[$restaurant->id] = $addres->street . ',' . $addres->house;
                 $mark[$restaurant->id] = $restaurant->marks->avg('mark');
@@ -32,6 +46,7 @@ class RestaurantsController extends Controller
             $data['img'] = $img;
             $data['address'] = $address;
             $data['mark'] = $mark;
+            $data['count']=$count_comment;
             echo json_encode($data);
         } else {
             $restaurants = Restaurant::where('visible', 1)->limit(6)->get();
@@ -90,8 +105,11 @@ class RestaurantsController extends Controller
             $img = [];
             $address = [];
             $mark = [];
+            $count_comment =[];
             foreach ($restaurants as $restaurant):
                 $img[$restaurant->id] = $restaurant->images[0]->path;
+                $count_comment[$restaurant->id] = count($restaurant->comments);
+
                 foreach ($restaurant->addresses as $addres)
                     $address[$restaurant->id] = $addres->street . ',' . $addres->house;
                 $mark[$restaurant->id] = $restaurant->marks->avg('mark');
@@ -101,6 +119,8 @@ class RestaurantsController extends Controller
             $data['img'] = $img;
             $data['address'] = $address;
             $data['mark'] = $mark;
+            $data['count'] = $count_comment;
+            dd($count_comment);
             echo json_encode($data);
         } else {
             $categories = Category::find($id);
@@ -125,8 +145,10 @@ class RestaurantsController extends Controller
             $img = [];
             $address = [];
             $mark = [];
+            $count_comment =[];
             foreach ($restaurants as $restaurant):
                 $img[$restaurant->id] = $restaurant->images[0]->path;
+            $count_comment[$restaurant->id] = count($restaurant->comments);
                 foreach ($restaurant->addresses as $addres)
                     $address[$restaurant->id] = $addres->street . ',' . $addres->house;
                 $mark[$restaurant->id] = $restaurant->marks->avg('mark');
@@ -136,6 +158,8 @@ class RestaurantsController extends Controller
             $data['img'] = $img;
             $data['address'] = $address;
             $data['mark'] = $mark;
+            $data['count'] = $count_comment;
+            dd($count_comment);
             echo json_encode($data);
         } else {
             $restaurants = Restaurant::where('visible', 1)->where('name', 'like', '%' . $request['search'] . '%')
@@ -145,13 +169,56 @@ class RestaurantsController extends Controller
 
     }
 
-    public function around(Request $request,Address $address)
+    public function around(Request $request, Address $address)
     {
         if ($request->lat != 0) {
             return $address->around($request->lat, $request->lng);
         } else {
             return view('location.restaurant_arount');
 
+        }
+    }
+
+    public function email_send()
+    {
+
+        $oClient = new Client();
+
+//Connect to the IMAP Server
+        $oClient->connect();
+        dump($oClient->getFolders());
+//Get all Mailboxes
+
+        $aMailboxes = $oClient->getFolders();
+       $a =$oClient->getMessages($aMailboxes[0]);
+
+dump($a['']);
+$l  = imap_search($oClient->connection,'UNSEEN');
+dump($l);
+$c = $aMailboxes->
+$b =$aMailboxes[0]->getMessage();
+        dd($b);
+
+
+
+
+//Loop through every Mailbox
+        /** @var \Webklex\IMAP\Folder $oMailbox */
+        foreach($aMailboxes as $oMailbox){
+
+            //Get all Messages of the current Mailbox
+            /** @var \Webklex\IMAP\Message $oMessage */
+            foreach($oMailbox->getMessages() as $oMessage){
+                echo $oMessage->subject.'<br />';
+                echo $oMessage->getHTMLBody(true);
+
+                //Move the current Message to 'INBOX.read'
+                if($oMessage->moveToFolder('INBOX.read') == true){
+                    echo 'Message has ben moved';
+                }else{
+                    echo 'Message could not be moved';
+                }
+            }
         }
     }
 }

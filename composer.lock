@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "382765d0044b23a0f4bc45df24ef76a7",
+    "content-hash": "b81e2acd464fcadd16dadd0d860e59eb",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -2489,6 +2489,106 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "webklex/laravel-imap",
+            "version": "1.0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Webklex/laravel-imap.git",
+                "reference": "b7f6f8f8648386b2fcde03b1bed9d44d06c2e934"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Webklex/laravel-imap/zipball/b7f6f8f8648386b2fcde03b1bed9d44d06c2e934",
+                "reference": "b7f6f8f8648386b2fcde03b1bed9d44d06c2e934",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.0.0",
+                "nesbot/carbon": "^1.22",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webklex\\IMAP\\": "src/IMAP"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Malte Goldenbaum",
+                    "email": "github@webklex.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel IMAP client",
+            "homepage": "https://github.com/webklex/laravel-imap",
+            "keywords": [
+                "imap",
+                "laravel",
+                "laravel-imap",
+                "mail",
+                "webklex"
+            ],
+            "time": "2017-03-23T22:51:00+00:00"
+        },
+        {
+            "name": "zalazdi/laravel-imap",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zalazdi/laravel-imap.git",
+                "reference": "1898bf234b8e9ad176ce8503e22c851d45e2c70c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zalazdi/laravel-imap/zipball/1898bf234b8e9ad176ce8503e22c851d45e2c70c",
+                "reference": "1898bf234b8e9ad176ce8503e22c851d45e2c70c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zalazdi\\LaravelImap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Krzysztof Graman",
+                    "email": "zalazdi@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 IMAP client.",
+            "homepage": "https://github.com/Zalazdi/LaravelImap",
+            "keywords": [
+                "imap",
+                "laravel",
+                "mail"
+            ],
+            "time": "2017-02-08T13:54:59+00:00"
         }
     ],
     "packages-dev": [

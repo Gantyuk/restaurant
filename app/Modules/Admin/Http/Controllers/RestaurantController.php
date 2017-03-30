@@ -8,6 +8,7 @@ use App\CategoryRestaurant;
 use App\Document;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditRestaurant;
+use App\Http\Requests\Prob;
 use App\Http\Requests\StoreRestorant;
 use App\Image;
 use App\Restaurant;
@@ -71,16 +72,17 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::find($id);
         if ($request->visible == true) {
             $restaurant->visible = 1;
-            $restaurant->save();
+
         } else {
             $restaurant->visible = 0;
-            $restaurant->save();
         }
+        $restaurant->save();
+
 
 
     }
 
-    public function update(Request $request, $id)
+    public function update(Prob $request, $id)
     {
         $restaurant = Restaurant::find($id);
         $restaurant->update($request->all());

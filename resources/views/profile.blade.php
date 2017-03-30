@@ -47,29 +47,29 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="passwd" class="col-md-4 control-label">Введіть старий пароль</label>
+                {{--<div class="form-group">--}}
+                    {{--<label for="passwd" class="col-md-4 control-label">Введіть старий пароль</label>--}}
 
-                    <div class="col-md-6">
-                        <input id="passwd" type="text" class="form-control" name="passwd" autofocus>
-                    </div>
-                </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--<input id="passwd" type="password" class="form-control" name="passwd" autofocus>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="form-group">
-                    <label for="new_passwd" class="col-md-4 control-label">Введіть новий пароль</label>
+                {{--<div class="form-group">--}}
+                    {{--<label for="new_passwd" class="col-md-4 control-label">Введіть новий пароль</label>--}}
 
-                    <div class="col-md-6">
-                        <input id="new_passwd" type="text" class="form-control" name="new_passwd" autofocus>
-                    </div>
-                </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--<input id="new_passwd" type="password" class="form-control" name="new_passwd" autofocus>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="form-group">
-                    <label for="repeat_new_passwd" class="col-md-4 control-label">Повторіть пароль</label>
+                {{--<div class="form-group">--}}
+                    {{--<label for="repeat_new_passwd" class="col-md-4 control-label">Повторіть пароль</label>--}}
 
-                    <div class="col-md-6">
-                        <input id="repeat_new_passwd" type="text" class="form-control" name="repeat_new_passwd" autofocus>
-                    </div>
-                </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--<input id="repeat_new_passwd" type="password" class="form-control" name="repeat_new_passwd" autofocus>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">

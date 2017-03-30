@@ -8,9 +8,11 @@
         "php": ">=5.6.4",
         "barryvdh/laravel-ide-helper": "^2.3",
         "caffeinated/modules": "^4.1",
+        "doctrine/dbal": "2.5.9",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "doctrine/dbal": "2.5.9"
+        "webklex/laravel-imap": "1.0.2.4",
+        "zalazdi/laravel-imap": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

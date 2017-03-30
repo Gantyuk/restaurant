@@ -14,7 +14,7 @@
                         {{$user->first_name}} {{ $user->last_name }}
                     </span></h3><br />
 
-                  <p> <h5> <span class="label label-info">Емаіл: {{$user->email}}</span></h5></p>
+                  <p> <h5> <span class="label label-info">Електронна пошта: {{$user->email}}</span></h5></p>
                 </div>
             </div>
         </div>

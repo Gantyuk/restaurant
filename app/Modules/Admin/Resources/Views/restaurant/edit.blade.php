@@ -1,7 +1,7 @@
 @extends('admin::layout.app')
 
 @section('content')
-
+{{dump($errors)}}
     <div class="right_col" role="main" style="min-height: 3801px;">
         <div class="col-md-12 col-sm-12 col-xs-12">
 

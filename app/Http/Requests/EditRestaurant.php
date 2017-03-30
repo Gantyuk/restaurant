@@ -24,9 +24,14 @@ class EditRestaurant extends FormRequest
     public function rules()
     {
         return [
+            'date'=>'required',
             'name'=>'required|min:2',
-            'short_description'=>'required|min:5|max:150',
+            'category'=>'required',
+            'short_description'=>'required|min:5',
             'description'=>'required|min:15',
+            'image'=>'required',
+            'menu'=>'required',
+            'address'=>'required'
         ];
     }
 }

@@ -72,7 +72,7 @@
                     fillOpacity: 0.15,
                     map: map,
                     center: i,
-                    radius: 500
+                    radius: 1000
                 });
 
                 $.ajax({
